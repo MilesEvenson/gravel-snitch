@@ -1,0 +1,121 @@
+## October 12, 2021
+
+Two bets:
+- Who holds the team with the snitch at the end of the regular season?
+- Who holds the team with the most games won claiming/holding the snitch?
+
+I've altered the second bet to make this basic analysis simpler.
+The actual bet gives each team 1pt for each day they hold the snitch,
+but I don't care to do that date math.
+
+
+Sources:
+- https://projects.fivethirtyeight.com/2022-nhl-predictions/games/
+- https://github.com/fivethirtyeight/data/tree/master/nhl-forecasts
+  - specifically the _latest.csv file
+- https://www.nhl.com/news/nhl-announces-2021-22-regular-season-schedule/c-325741704
+  - less helpful than I'd hoped
+
+
+Naive approach:
+Start with the Lightning's first game and build out every possible branch
+
+Problem:
+2^82 is a very big number
+
+Wolfram Alpha says:
+
+  4.835703278458516698824704 * 10^24
+  4,835,703,278,458,516,698,824,704
+
+This is much lower than estimated number of atoms in the Earth
+(roughly 1.33 * 10^53)
+
+
+I need to be smarter.
+
+
+What are the goals of this analysis:
+- Score each team by likelihood of holding snitch at end of season.
+- Score each team by opportunities to claim the snitch.
+
+
+I can think of two approaches:
+a) Calculation: Which teams play Lightning most? Which teams play those teams most? Etc...
+b) Simulation:  Give each team 50-50 odds to win. Simulate 10,000 seasons and count.
+
+
+How confident am I in my ability to do a rigorous calculation?
+Seems not-too-hard?
+
+
+Matchup details from the NHL press release:
+
+  Reminder: Scheduling Matrix
+  Each Division Has Eight Teams
+
+  Games Within Division
+  5 teams x 2 home / 2 away (Subtotal 10 home / 10 away)
+  1 team  x 2 home / 1 away (Subtotal 2 home / 1 away)
+  1 team  x 1 home / 2 away (Subtotal 1 home / 2 away)
+
+  Games Within Conference (Non-Division)
+  4 teams x 2 home / 1 away (Subtotal 8 home / 4 away)
+  4 teams x 1 home / 2 away (Subtotal 4 home / 8 away)
+
+  Non-Conference Games    
+  16 teams x 1 home / 1 away (Subtotal 16 home / 16 away)
+
+  Grand Total - 82 Games
+  41 home / 41 away
+
+
+I need to get this CSV from Five Thirty Eight
+translated into JSON because NodeJS doesn't have
+CSV parsing in the standard library.
+
+Guess I need to write a short Python script.
+Yeesh.
+
+
+Before getting into that script, I should decide on
+what I want the JSON to look like.
+
+Team:
+- slug
+- location (Carolina, etc)
+- name (Panthers, etc)
+
+Game:
+- date (YYYY-mm-dd)
+- home team slug
+- away team slug
+
+
+### October 13, 2021
+
+I'm more interested in writing the simulation
+than in writing the calculation.
+
+
+What does one season look like?
+- per-team counts for "snitch games won"
+- load snitch history into team scores
+- track team that currently holds the snitch
+- find next game for snitch team
+- flip the coin
+- assign snitch
+- repeat
+
+
+Must figure out basic date math for this.
+
+I guess assume each game happens at 12:00:00
+and add 86400000ms to move forward one day.
+
+
+
+
+
+
+

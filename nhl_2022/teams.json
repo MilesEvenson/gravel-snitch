@@ -1,0 +1,162 @@
+{
+  "ANA": {
+    "location": "Anaheim",
+    "name": "Ducks",
+    "slug": "ANA"
+  },
+  "ARI": {
+    "location": "Arizona",
+    "name": "Coyotes",
+    "slug": "ARI"
+  },
+  "BOS": {
+    "location": "Boston",
+    "name": "Bruins",
+    "slug": "BOS"
+  },
+  "BUF": {
+    "location": "Buffalo",
+    "name": "Sabres",
+    "slug": "BUF"
+  },
+  "CGY": {
+    "location": "Calgary",
+    "name": "Flames",
+    "slug": "CGY"
+  },
+  "CAR": {
+    "location": "Carolina",
+    "name": "Hurricanes",
+    "slug": "CAR"
+  },
+  "CHI": {
+    "location": "Chicago",
+    "name": "Blackhawks",
+    "slug": "CHI"
+  },
+  "COL": {
+    "location": "Colorado",
+    "name": "Avalanche",
+    "slug": "COL"
+  },
+  "CBJ": {
+    "location": "Columbus",
+    "name": "Blue-Jackets",
+    "slug": "CBJ"
+  },
+  "DAL": {
+    "location": "Dallas",
+    "name": "Stars",
+    "slug": "DAL"
+  },
+  "DET": {
+    "location": "Detroit",
+    "name": "Red-Wings",
+    "slug": "DET"
+  },
+  "EDM": {
+    "location": "Edmonton",
+    "name": "Oilers",
+    "slug": "EDM"
+  },
+  "FLA": {
+    "location": "Florida",
+    "name": "Panthers",
+    "slug": "FLA"
+  },
+  "LAK": {
+    "location": "Los-Angeles",
+    "name": "Kings",
+    "slug": "LAK"
+  },
+  "MIN": {
+    "location": "Minnesota",
+    "name": "Wild",
+    "slug": "MIN"
+  },
+  "MTL": {
+    "location": "Montreal",
+    "name": "Canadiens",
+    "slug": "MTL"
+  },
+  "NSH": {
+    "location": "Nashville",
+    "name": "Predators",
+    "slug": "NSH"
+  },
+  "NJD": {
+    "location": "New-Jersey",
+    "name": "Devils",
+    "slug": "NJD"
+  },
+  "NYI": {
+    "location": "New-York",
+    "name": "Islanders",
+    "slug": "NYI"
+  },
+  "NYR": {
+    "location": "New-York",
+    "name": "Rangers",
+    "slug": "NYR"
+  },
+  "OTT": {
+    "location": "Ottawa",
+    "name": "Senators",
+    "slug": "OTT"
+  },
+  "PHI": {
+    "location": "Philadelphia",
+    "name": "Flyers",
+    "slug": "PHI"
+  },
+  "PIT": {
+    "location": "Pittsburgh",
+    "name": "Penguins",
+    "slug": "PIT"
+  },
+  "SJS": {
+    "location": "San-Jose",
+    "name": "Sharks",
+    "slug": "SJS"
+  },
+  "SEA": {
+    "location": "Seattle",
+    "name": "Kraken",
+    "slug": "SEA"
+  },
+  "STL": {
+    "location": "St.-Louis",
+    "name": "Blues",
+    "slug": "STL"
+  },
+  "TBL": {
+    "location": "Tampa-Bay",
+    "name": "Lightning",
+    "slug": "TBL"
+  },
+  "TOR": {
+    "location": "Toronto",
+    "name": "Maple-Leafs",
+    "slug": "TOR"
+  },
+  "VAN": {
+    "location": "Vancouver",
+    "name": "Canucks",
+    "slug": "VAN"
+  },
+  "VEG": {
+    "location": "Vegas",
+    "name": "Golden-Knights",
+    "slug": "VEG"
+  },
+  "WSH": {
+    "location": "Washington",
+    "name": "Capitals",
+    "slug": "WSH"
+  },
+  "WPG": {
+    "location": "Winnipeg",
+    "name": "Jets",
+    "slug": "WPG"
+  }
+}
