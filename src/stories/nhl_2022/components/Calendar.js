@@ -51,39 +51,47 @@ export class Calendar extends React.Component {
     rowDate = add(rowDate, { days: 1 });
 
     let gameToday = null;
-    let holder = this.state.slugHolder;
+    let rowStrDate = format(rowDate, 'yyyy-MM-dd');
+    let rowHolder = this.state.slugHolder;
     let holderIsHome = false;
     let slugChallenger = '';
     let slugWinner = '';
+    let tdKey = '';
+    let trKey = '';
 
     while (rowDate < today) {
-      if (this.state.rosters.hasOwnProperty(format(rowDate, 'yyyy-MM-dd'))) {
-        rowRosters = this.state.rosters[format(rowDate, 'yyyy-MM-dd')];
+      console.log('rowDate:', rowDate);
+      rowStrDate = format(rowDate, 'yyyy-MM-dd');
+
+      if (this.state.rosters.hasOwnProperty(rowStrDate)) {
+        rowRosters = this.state.rosters[rowStrDate];
       }
 
       gameToday = this.state.games.find(g => (
-        g.gameday === format(rowDate, 'yyyy-MM-dd')
+        g.gameday === rowStrDate
         && (
-          g.slug_away === holder
-          || g.slug_home === holder
+          g.slug_away === rowHolder
+          || g.slug_home === rowHolder
         )
       ));
 
       if (gameToday !== undefined) {
-        holder = gameToday.slug_winner;
+        rowHolder = gameToday.slug_winner;
+        trKey = `row-${rowStrDate}`;
         rows.push((
-          <tr key={format(rowDate, 'yyyy-MM-dd')}>
+          <tr key={tdKey}>
             <td>{format(rowDate, 'MMMM do')}</td>
             {this.state.parties.map(p => {
+              console.log(`processing party ${p.name}`);
+              tdKey = rowStrDate + '-' + p.name;
+              console.log('tdKey:', tdKey);
               let cellValue = '';
               if (rowRosters[p.name].includes(gameToday.slug_winner)) {
                 cellValue = gameToday.slug_winner;
               }
-              else { console.log(`${p.name} no own ${gameToday.slug_winner}`); }
+
               return (
-                <td key={`${format(rowDate, 'yyyy-MM-dd')}-${p.name}`}>
-                  {cellValue}
-                </td>
+                <td key={tdKey}>{cellValue}</td>
               );
             })}
           </tr>
@@ -91,14 +99,30 @@ export class Calendar extends React.Component {
       }
 
       rowDate = add(rowDate, { days: 1 });
-      console.log('rowDate:', rowDate);
     }
 
     return rows;
   }
 
   getRowsForSpeculativeTimeline(today) {
-    return [];
+    const rows = [];
+    return rows;
+  }
+
+  getRowsForLookahead(startDate) {
+    const lookaheadGames = 2;
+    let rowDate = new Date();
+    rowDate.setTime(startDate.getTime());
+    let rowStrDate = format(rowDate, 'yyyy-MM-dd');
+
+    console.log(`Looking ahead ${lookaheadGames} games from ${rowStrDate}`);
+
+    // Looking 2 outcomes ahead will yield up to 4 holders.
+    // Data structure for both generations?
+
+    const rows = [];
+
+    return rows;
   }
 
   render() {
@@ -115,6 +139,9 @@ export class Calendar extends React.Component {
 
     const rowsPlayed = this.getRowsForCompletedGames(today);
     const rowsSpeculative = this.getRowsForSpeculativeTimeline(today);
+    // TODO: pass the correct date value here (after speculative timeline).
+    const lookaheadStart = add(today, { days: rowsSpeculative.length });
+    const rowsLookahead = this.getRowsForLookahead(today);
 
     return (
       <table>

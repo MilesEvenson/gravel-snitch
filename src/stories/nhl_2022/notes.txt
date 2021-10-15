@@ -188,5 +188,11 @@ in the main menu
 Thinking through how to pre-process played and speculative game data.
 And thinking about how to send it to the row renderer
 
+Real basic table generation in place
+
+
+Thinking ub how to generate the 2 levels of lookahead
+Something to mull over
+
 
 
