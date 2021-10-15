@@ -183,4 +183,10 @@ Array of per season/whatever dicts
 in the main menu
 
 
+### Octobr 15, 2021
+
+Thinking through how to pre-process played and speculative game data.
+And thinking about how to send it to the row renderer
+
+
 

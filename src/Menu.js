@@ -33,7 +33,6 @@ export class Menu extends React.Component {
       slug,
     } = this.props.stories[this.state.selectedStory];
     const StoryComponent = this.props.stories[this.state.selectedStory].getEntryComponent();
-    console.dir(StoryComponent, { depth: null });
     return (
       <StoryComponent
         label={label}

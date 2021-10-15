@@ -6,7 +6,8 @@
     "orig_away_win": 0.38630498175387884,
     "orig_home_win": 0.6136950182461212,
     "slug_away": "PIT",
-    "slug_home": "TBL"
+    "slug_home": "TBL",
+    "slug_winner": "PIT"
   },
   {
     "gameday": "2021-10-12",
@@ -66,10 +67,13 @@
   },
   {
     "gameday": "2021-10-14",
-    "prob_away_win": 0.43770956368526104,
-    "prob_home_win": 0.562290436314739,
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
+    "orig_prob_away_win": 0.43770956368526104,
+    "orig_prob_home_win": 0.562290436314739,
     "slug_away": "PIT",
-    "slug_home": "FLA"
+    "slug_home": "FLA",
+    "slug_winner": "FLA"
   },
   {
     "gameday": "2021-10-14",
