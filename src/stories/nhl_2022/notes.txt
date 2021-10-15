@@ -114,8 +114,73 @@ I guess assume each game happens at 12:00:00
 and add 86400000ms to move forward one day.
 
 
+Back after dinner
+
+I'm less excited about predictive analysis now
+
+I'm more interested in telling the story of the
+season, with light analysis.
+
+Idea:
+Tall page with 2 columns
+- left column is a table
+  - ledger of the season
+  - 6 columns (1 for each owner)
+  - ~82 rows (1 for each game played)
+- right column
+  - drawing space to display possibility tree of next 2 (3?) games
 
 
+How to generate table?
+Vanilla React with click events?
+
+Why do I want click events?
+Don't need them initially because the next snitch
+game is always known, as are the next N possible games
+
+Start showing:
+- next game outcomes (2 branches)
+- next next game outcomes (4 branches)
+
+I think 3 levels (8 branches) is too complex
+Maybe leave this as an experimental hack
+
+
+So no click events
+Just render the page with the information at hand
+
+
+npm install --save-dev @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react  babel-loader copy-webpack-plugin html-loader  html-webpack-plugin webpack-dev-server
+
+
+This install is slooooow
+finished eventually
+
+pausing for the night
+will revisit later
+
+
+### October 14, 2021
+
+Hoping to get a basic React app ready to go
+over lunch today
+
+I've made a mess
+I need to figure out where my root is and how
+sub-projects will fit into it.
+
+Probably put current nhl_2022 into a data directory
+and build a menu page in golden_snitch root.
+
+Clean out all draft work and replace with something in the root!
+
+
+Back after dinner
+Time for a new, comprehensive plan
+
+How to structure the menu?
+Array of per season/whatever dicts
+in the main menu
 
 
 
