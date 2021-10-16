@@ -63,7 +63,7 @@ Matchup details from the NHL press release:
   4 teams x 2 home / 1 away (Subtotal 8 home / 4 away)
   4 teams x 1 home / 2 away (Subtotal 4 home / 8 away)
 
-  Non-Conference Games
+  Non-Conference Games    
   16 teams x 1 home / 1 away (Subtotal 16 home / 16 away)
 
   Grand Total - 82 Games
@@ -183,109 +183,30 @@ Array of per season/whatever dicts
 in the main menu
 
 
-My initial plan is to construct all branches of
-the lookahead tree simultaneously.
-I don't know if that makes sense.
+Looking good!
 
-         A   <--- Final past/speculative game
-        / \
-       B   \
-      / \   C
-     /   D / \
-    /     /   E
-   /     F
-  G
+Back to working on the lookahead code
+
+Looking good
+Getting 7 games as expected!
+
+I think I need to modify the lookahead dictionary
+to be keyed off date, then contain game slugs
 
 
-Remember!
-Dates for lookahead games are all over the place!
+Thinking through how to render cells from the lookahead dictionary.
+HMMMMMMMMM
+It's possible for a party to own multiple teams
+that could win on a given date.
+I guess commas for now.
 
-Do I care about representing this tree as an array?
-If it were a simple
-[ A, B, C, D, E, F, G ]
+Hmmmm
+2 is too many lookahead generations
+Setting countLookaheadGames = 1
 
-We know it is a binary tree.
-But we also know a given game may appear more than once.
-
-  A0
-  |------------------------B(1-0)/A(0-1)
-  |                        |------------D(1-0)/B(1-1)
-  A(1-0)----C(1-0)/A(1-1)  |
-  |                        B(2-0)
-  |
-  A(2-0)
-
-
-What if I simplified the data structure
-to just be a dictionary with this key:
-  2021-10-16-NYI-FLA
-
-
-Thinking more ub the dictionary plan.
-I think I still need to keep the graph structure
-so I can remove branches as the user builds
-their speculative timeline.
-
-Wait
-No
-I will always rebuild the lookahead tree from
-zero based on the final completed/speculative
-game on the calendar.
-
-No need to store the branch relationships in React Component state.
-
-
-I'll do a breadth-first traversal of the tree(graph?!)
-
-
-Pseudocode
-  - Enqueue A0 (final game on the calendar), with generation = 0
-  - Dequeue a game
-    - Find next game for away team, enqueue if generation < 3
-    - Find next game for home team, enqueue if generation < 3
-
-
-I think this is okay
-
-Hmmmmm
-
-Doing all this processing in render() is dumb.
-I should do it all in constructor()!
-- prep completed rows
-- count party scores
-- count per-team snitchpoints
-- dictionary of date - game
-- update "current" snitch holder
-
-
-Making a checkpoint commit
-
-
-Back after shakshuka brunch
-Starting to work on the preprocessing logic
-
-How to store pre-processed completed games?
-I think an array of dictionaries makes sense.
-What goes in those dictionaries?
-- game date (not str)
-- party name
-- slug holder
-
-
-Preprocessing completed games looking good
+Feeling good!
 
 
 Making a commit
-
-
-
-
-
-
-
-
-
-
-
 
 
