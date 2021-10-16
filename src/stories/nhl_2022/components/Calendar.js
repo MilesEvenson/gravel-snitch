@@ -15,7 +15,9 @@ export class Calendar extends React.Component {
     super(props);
 
     this.state = {
+      countLookaheadGames: 2,
       games: Games,
+      lookaheadTree: {},
       parties: Parties,
       rosters: Rosters,
       slugHolder: 'TBL',
@@ -27,6 +29,46 @@ export class Calendar extends React.Component {
     };
   }
 
+
+  findNextGameForTeam(strDate, slug) {
+    console.log(`Finding next game for ${slug} after ${strDate}`);
+    const nextGame = this.state.games.find(g => {
+      return (
+        strDate < g.gameday
+        && (
+          g.slug_home === slug
+          || g.slug_away === slug
+        )
+      );
+    });
+    if (nextGame) {
+      console.log(`Found game`, nextGame);
+    } else {
+      console.log(`${slug} does not have a game after ${strDate}`);
+    }
+    return nextGame;
+  }
+
+  findTeamGameOnDate(targetDate, slug) {
+    const strDate = format(targetDate, 'yyyy-MM-dd');
+    console.log(`Finding game for ${slug} on ${strDate}`);
+    const game = this.state.games.find(g => {
+      return (
+        strDate === g.gameday
+        && (
+          g.slug_home === slug
+          || g.slug_away === slug
+        )
+      );
+    });
+    if (game) {
+      console.log(`Found game`, game);
+    } else {
+      console.log(`${slug} does not have a game on ${strDate}`);
+    }
+    return game;
+  }
+
   getRowsForCompletedGames(today) {
     let rowDate = new Date();
     rowDate.setTime(this.state.zeroWeekDate.getTime());
@@ -35,6 +77,8 @@ export class Calendar extends React.Component {
 
     const rows = [];
 
+    // TODO:  It would be cool if we rendered the initial Team/Party were dynamically.
+    //        This is a looooow priority enhancement.
     rows.push((
       <tr key={format(rowDate, 'yyyy-MM-dd')} style={{background: 'lightgray'}}>
         <td>{format(rowDate, 'MMMM do')}</td>
@@ -67,11 +111,12 @@ export class Calendar extends React.Component {
         rowRosters = this.state.rosters[rowStrDate];
       }
 
+      // TODO: replace with a call to findTeamGameOnDate()
       gameToday = this.state.games.find(g => (
         g.gameday === rowStrDate
         && (
-          g.slug_away === rowHolder
-          || g.slug_home === rowHolder
+          g.slug_home === rowHolder
+          || g.slug_away === rowHolder
         )
       ));
 
@@ -82,9 +127,7 @@ export class Calendar extends React.Component {
           <tr key={tdKey}>
             <td>{format(rowDate, 'MMMM do')}</td>
             {this.state.parties.map(p => {
-              console.log(`processing party ${p.name}`);
-              tdKey = rowStrDate + '-' + p.name;
-              console.log('tdKey:', tdKey);
+              tdKey = `${rowStrDate}-${p.name}`;
               let cellValue = '';
               if (rowRosters[p.name].includes(gameToday.slug_winner)) {
                 cellValue = gameToday.slug_winner;
@@ -110,17 +153,99 @@ export class Calendar extends React.Component {
   }
 
   getRowsForLookahead(startDate) {
-    const lookaheadGames = 2;
     let rowDate = new Date();
     rowDate.setTime(startDate.getTime());
+    let gameToday = null;
     let rowStrDate = format(rowDate, 'yyyy-MM-dd');
+    let rowHolder = this.state.slugHolder;
+    let holderIsHome = false;
+    let slugChallenger = '';
+    let slugWinner = '';
+    let tdKey = '';
+    let trKey = '';
 
-    console.log(`Looking ahead ${lookaheadGames} games from ${rowStrDate}`);
+    console.log(`Looking ahead ${this.state.countLookaheadGames} games from ${rowStrDate}`);
 
-    // Looking 2 outcomes ahead will yield up to 4 holders.
-    // Data structure for both generations?
+    // TODO: replace with call to findTeamGameOnDate()
+
+    const lookaheadGames = {};
+
+    let qGame = this.findTeamGameOnDate(rowDate, rowHolder);
+    console.log('found game', qGame);
+    let key = '';
+    let qNode = {};
+    const queue = [
+      {
+        generation: 0,
+        game: qGame,
+      }
+    ];
+    while (0 < queue.length) {
+      qNode = queue.shift();
+      console.dir(qNode, { dept: null });
+
+      key = `${qNode.game.gameday}-${qNode.game.slug_home}-${qNode.game.slug_away}`;
+      lookaheadGames[key] = qNode.game;
+
+      if (qNode.generation <= this.state.countLookaheadGames) {
+        qGame = this.findNextGameForTeam(qNode.game.gameday, qNode.game.slug_home);
+        queue.push({
+          generation: 1 + qNode,
+          game: qGame,
+        });
+        qGame = this.findNextGameForTeam(qNode.game.gameday, qNode.game.slug_away);
+        queue.push({
+          generation: 1 + qNode,
+          game: qGame,
+        });
+      }
+    }
+
+    console.log('Built dictionary of lookahead games:');
+    console.dir(lookaheadGames, { depth: null });
 
     const rows = [];
+
+    while (rowDate < this.state.strSeasonEnd) {
+      console.log('rowDate:', rowDate);
+      rowStrDate = format(rowDate, 'yyyy-MM-dd');
+
+      if (this.state.rosters.hasOwnProperty(rowStrDate)) {
+        rowRosters = this.state.rosters[rowStrDate];
+      }
+
+      // TODO: replace with call to findTeamGameOnDate()
+      gameToday = this.state.games.find(g => (
+        g.gameday === rowStrDate
+        && (
+          g.slug_away === rowHolder
+          || g.slug_home === rowHolder
+        )
+      ));
+
+      if (gameToday !== undefined) {
+        rowHolder = gameToday.slug_winner;
+        trKey = `row-${rowStrDate}`;
+        rows.push((
+          <tr key={tdKey}>
+            <td>{format(rowDate, 'MMMM do')}</td>
+            {this.state.parties.map(p => {
+              tdKey = `${rowStrDate}-${p.name}`;
+              const cellValue = '';
+              if (rowRosters[p.name].includes(gameToday.slug_winner)) {
+                cellValue = gameToday.slug_winner;
+              }
+
+              return (
+                <td key={tdKey}>{cellValue}</td>
+              );
+            })}
+          </tr>
+        ));
+      }
+
+      rowDate = add(rowDate, { days: 1 });
+    }
 
     return rows;
   }
