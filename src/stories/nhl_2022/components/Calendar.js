@@ -14,25 +14,89 @@ export class Calendar extends React.Component {
   constructor(props) {
     super(props);
 
+    const today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
+    const zeroWeekDate = new Date('2021-10-11T12:00:00.000-04:00');
+
+    const completedGames = this.processCompletedGames(zeroWeekDate, today);
+
+    const slugHolder = completedGames[completedGames.length - 1].slugHolder;
+
     this.state = {
+      completedGames: completedGames,
       countLookaheadGames: 2,
-      games: Games,
       lookaheadTree: {},
-      parties: Parties,
-      rosters: Rosters,
-      slugHolder: 'TBL',
+      slugHolder: slugHolder,
+      slugInitalHolder: 'TBL',
       strSeasonStart: '2021-10-14',
       strSeasonEnd: '2022-04-30',
       speculativeTimeline: [],
-      teams: Teams,
-      zeroWeekDate: new Date('2021-10-11T12:00:00.000-04:00'),
+      today: today,
+      zeroWeekDate: zeroWeekDate,
     };
+  }
+
+
+  processCompletedGames(zeroWeekDate, today) {
+    let rowDate = new Date();
+    rowDate.setTime(zeroWeekDate.getTime());
+    let rowStrDate = format(rowDate, 'yyyy-MM-dd');
+
+    // Initialize the calendar rows with the zero week state.
+    const games = [
+      {
+        gameDate: rowDate,
+        partyName: 'Erik',
+        slugHolder: 'TBL',
+      },
+    ];
+
+    rowDate = add(rowDate, { days: 1 });
+
+    let gameForRow = null;
+    let holderIsHome = false;
+    let rowHolder = 'TBL';
+    let rowParty = {};
+    let rowRosters = Rosters[rowStrDate];
+    let slugChallenger = '';
+    let tdKey = '';
+    let trKey = '';
+
+    while (rowDate < today) {
+      rowStrDate = format(rowDate, 'yyyy-MM-dd');
+
+      if (Rosters.hasOwnProperty(rowStrDate)) {
+        rowRosters = Rosters[rowStrDate];
+      }
+
+      gameForRow = this.findTeamGameOnDate(rowDate, rowHolder);
+
+      if (gameForRow !== undefined) {
+        rowHolder = gameForRow.slug_winner;
+        rowParty = Parties.find(p =>  (
+          rowRosters[p.name].includes(rowHolder)
+        ));
+        games.push({
+          gameDate: rowDate,
+          partyName: rowParty.name,
+          slugHolder: rowHolder,
+        });
+      }
+
+      rowDate = add(rowDate, { days: 1 });
+    }
+
+    console.log('preprocessing generated records:', games);
+
+    return games;
   }
 
 
   findNextGameForTeam(strDate, slug) {
     console.log(`Finding next game for ${slug} after ${strDate}`);
-    const nextGame = this.state.games.find(g => {
+    const nextGame = Games.find(g => {
       return (
         strDate < g.gameday
         && (
@@ -52,7 +116,7 @@ export class Calendar extends React.Component {
   findTeamGameOnDate(targetDate, slug) {
     const strDate = format(targetDate, 'yyyy-MM-dd');
     console.log(`Finding game for ${slug} on ${strDate}`);
-    const game = this.state.games.find(g => {
+    const game = Games.find(g => {
       return (
         strDate === g.gameday
         && (
@@ -69,85 +133,28 @@ export class Calendar extends React.Component {
     return game;
   }
 
-  getRowsForCompletedGames(today) {
-    let rowDate = new Date();
-    rowDate.setTime(this.state.zeroWeekDate.getTime());
-
-    let rowRosters = this.state.rosters[format(rowDate, 'yyyy-MM-dd')];
-
-    const rows = [];
-
-    // TODO:  It would be cool if we rendered the initial Team/Party were dynamically.
-    //        This is a looooow priority enhancement.
-    rows.push((
-      <tr key={format(rowDate, 'yyyy-MM-dd')} style={{background: 'lightgray'}}>
-        <td>{format(rowDate, 'MMMM do')}</td>
-        <td>{this.state.slugHolder}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    ));
-
-    rowDate = add(rowDate, { days: 1 });
-
-    let gameToday = null;
-    let rowStrDate = format(rowDate, 'yyyy-MM-dd');
-    let rowHolder = this.state.slugHolder;
-    let holderIsHome = false;
-    let slugChallenger = '';
-    let slugWinner = '';
-    let tdKey = '';
-    let trKey = '';
-
-    while (rowDate < today) {
-      console.log('rowDate:', rowDate);
-      rowStrDate = format(rowDate, 'yyyy-MM-dd');
-
-      if (this.state.rosters.hasOwnProperty(rowStrDate)) {
-        rowRosters = this.state.rosters[rowStrDate];
-      }
-
-      // TODO: replace with a call to findTeamGameOnDate()
-      gameToday = this.state.games.find(g => (
-        g.gameday === rowStrDate
-        && (
-          g.slug_home === rowHolder
-          || g.slug_away === rowHolder
-        )
-      ));
-
-      if (gameToday !== undefined) {
-        rowHolder = gameToday.slug_winner;
-        trKey = `row-${rowStrDate}`;
-        rows.push((
-          <tr key={tdKey}>
-            <td>{format(rowDate, 'MMMM do')}</td>
-            {this.state.parties.map(p => {
-              tdKey = `${rowStrDate}-${p.name}`;
-              let cellValue = '';
-              if (rowRosters[p.name].includes(gameToday.slug_winner)) {
-                cellValue = gameToday.slug_winner;
-              }
-
-              return (
-                <td key={tdKey}>{cellValue}</td>
-              );
-            })}
-          </tr>
-        ));
-      }
-
-      rowDate = add(rowDate, { days: 1 });
-    }
-
+  buildRowsForCompletedGames() {
+    const rows = this.state.completedGames.map(g => {
+      const rowStrDate = format(g.gameDate, 'yyyy-MM-dd');
+      const trKey = `calendar-row-${rowStrDate}`;
+      return (
+        <tr key={trKey}>
+          <td>{rowStrDate}</td>
+          {Parties.map(p => {
+            const tdKey = `calendar-cell-${rowStrDate}-${p.name}`;
+            let cellValue = '';
+            if (p.name === g.partyName) {
+              cellValue = g.slugHolder;
+            }
+            return (<td key={tdKey}>{cellValue}</td>);
+          })}
+        </tr>
+      );
+    });
     return rows;
   }
 
-  getRowsForSpeculativeTimeline(today) {
+  buildRowsForSpeculativeTimeline(today) {
     const rows = [];
     return rows;
   }
@@ -157,7 +164,7 @@ export class Calendar extends React.Component {
     rowDate.setTime(startDate.getTime());
     let gameToday = null;
     let rowStrDate = format(rowDate, 'yyyy-MM-dd');
-    let rowHolder = this.state.slugHolder;
+    let rowHolder = this.state.slugInitalHolder;
     let holderIsHome = false;
     let slugChallenger = '';
     let slugWinner = '';
@@ -210,12 +217,12 @@ export class Calendar extends React.Component {
       console.log('rowDate:', rowDate);
       rowStrDate = format(rowDate, 'yyyy-MM-dd');
 
-      if (this.state.rosters.hasOwnProperty(rowStrDate)) {
-        rowRosters = this.state.rosters[rowStrDate];
+      if (rosters.hasOwnProperty(rowStrDate)) {
+        rowRosters = rosters[rowStrDate];
       }
 
       // TODO: replace with call to findTeamGameOnDate()
-      gameToday = this.state.games.find(g => (
+      gameToday = Games.find(g => (
         g.gameday === rowStrDate
         && (
           g.slug_away === rowHolder
@@ -229,7 +236,7 @@ export class Calendar extends React.Component {
         rows.push((
           <tr key={tdKey}>
             <td>{format(rowDate, 'MMMM do')}</td>
-            {this.state.parties.map(p => {
+            {Parties.map(p => {
               tdKey = `${rowStrDate}-${p.name}`;
               const cellValue = '';
               if (rowRosters[p.name].includes(gameToday.slug_winner)) {
@@ -255,18 +262,16 @@ export class Calendar extends React.Component {
       <thead>
         <tr>
           <th></th>
-          {this.state.parties.map(p => (<th key={p.name}>{p.name}</th>))}
+          {Parties.map(p => (<th key={p.name}>{p.name}</th>))}
         </tr>
       </thead>
     );
 
-    const today = new Date();
+    const rowsPlayed = this.buildRowsForCompletedGames();
+    const rowsSpeculative = this.buildRowsForSpeculativeTimeline(this.state.today);
 
-    const rowsPlayed = this.getRowsForCompletedGames(today);
-    const rowsSpeculative = this.getRowsForSpeculativeTimeline(today);
-    // TODO: pass the correct date value here (after speculative timeline).
-    const lookaheadStart = add(today, { days: rowsSpeculative.length });
-    const rowsLookahead = this.getRowsForLookahead(today);
+    //const lookaheadStart = add(this.state.today, { days: rowsSpeculative.length });
+    //const rowsLookahead = this.getRowsForLookahead(lookaheadStart);
 
     return (
       <table>

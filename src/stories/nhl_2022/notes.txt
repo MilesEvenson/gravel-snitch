@@ -261,6 +261,29 @@ I should do it all in constructor()!
 Making a checkpoint commit
 
 
+Back after shakshuka brunch
+Starting to work on the preprocessing logic
+
+How to store pre-processed completed games?
+I think an array of dictionaries makes sense.
+What goes in those dictionaries?
+- game date (not str)
+- party name
+- slug holder
+
+
+Preprocessing completed games looking good
+
+
+Making a commit
+
+
+
+
+
+
+
+
 
 
 
