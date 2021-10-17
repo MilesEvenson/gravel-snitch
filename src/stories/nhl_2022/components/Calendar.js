@@ -4,6 +4,9 @@ import parse from 'date-fns/parse'
 import React from 'react';
 
 
+import { CalendarCell } from './CalendarCell';
+
+
 const Games = require('../data/games');
 const Parties = require('../data/parties');
 const Rosters = require('../data/rosters');
@@ -16,6 +19,7 @@ export class Calendar extends React.Component {
     super(props);
 
     const today = new Date();
+    // Zero hours/mins/secs to make comparisons easier to work with.
     today.setHours(0);
     today.setMinutes(0);
     today.setSeconds(0);
@@ -36,7 +40,15 @@ export class Calendar extends React.Component {
       speculativeTimeline: [],
       today: today,
       zeroWeekDate: zeroWeekDate,
+      zeroWeekGame: {
+        gameDate: zeroWeekDate,
+        partyName: 'Erik',
+        slugHolder: 'TBL',
+      },
     };
+
+
+    this.addGameToSpeculativeTimeline = this.addGameToSpeculativeTimeline.bind(this);
   }
 
 
@@ -45,14 +57,7 @@ export class Calendar extends React.Component {
     rowDate.setTime(zeroWeekDate.getTime());
     let rowStrDate = format(rowDate, 'yyyy-MM-dd');
 
-    // Initialize the calendar rows with the zero week state.
-    const games = [
-      {
-        gameDate: rowDate,
-        partyName: 'Erik',
-        slugHolder: 'TBL',
-      },
-    ];
+    const games = [];
 
     rowDate = add(rowDate, { days: 1 });
 
@@ -89,6 +94,20 @@ export class Calendar extends React.Component {
     }
 
     return games;
+  }
+
+
+  addGameToSpeculativeTimeline(slug, strGameday) {
+    this.setState({
+      slugHolder: slug,
+      speculativeTimeline: [
+        ...this.state.speculativeTimeline,
+        {
+          gameDate: parse(strGameday, 'yyyy-MM-dd', new Date()),
+          slugHolder: slug,
+        },
+      ],
+    });
   }
 
 
@@ -139,12 +158,17 @@ export class Calendar extends React.Component {
         <tr key={trKey}>
           <td>{format(g.gameDate, 'MMMM do')}</td>
           {Parties.map(p => {
-            const tdKey = `calendar-cell-${rowStrDate}-${p.name}`;
-            let cellValue = '';
+            const slugs = [];
             if (p.name === g.partyName) {
-              cellValue = g.slugHolder;
+              slugs.push(g.slugHolder);
             }
-            return (<td key={tdKey}>{cellValue}</td>);
+            return (
+              <CalendarCell
+                cellType="completed"
+                key={`calendar-cell-${rowStrDate}-${p.name}`}
+                slugs={slugs}
+              />
+            );
           })}
         </tr>
       );
@@ -153,11 +177,41 @@ export class Calendar extends React.Component {
   }
 
   buildRowsForSpeculativeTimeline(today) {
-    const rows = [];
+    const rostersForSpeculation = Object.values(Rosters).pop();
+    const rows = this.state.speculativeTimeline.map(sg => {
+      const rowStrDate = format(sg.gameDate, 'yyyy-MM-dd');
+      const trKey = `calendar-row-${rowStrDate}`;
+      return (
+        <tr key={trKey}>
+          <td>{format(sg.gameDate, 'MMMM do')}</td>
+          {Parties.map(p => {
+            const slugs = [];
+            if (rostersForSpeculation[p.name].includes(sg.slugHolder)) {
+              slugs.push(sg.slugHolder);
+            }
+            // TODO: add click handler for removing this game from speculative timeline
+            return (
+              <CalendarCell
+                cellType="speculative"
+                key={`calendar-cell-${rowStrDate}-${p.name}`}
+                slugs={slugs}
+              />
+            );
+          })}
+        </tr>
+      );
+    });
     return rows;
   }
 
-  getRowsForLookahead(startDate) {
+  getRowsForLookahead(today) {
+    let startDate = new Date();
+    startDate.setTime(today.getTime());
+    if (0 < this.state.speculativeTimeline.length) {
+      const [ preLookaheadGame ] = this.state.speculativeTimeline.slice(-1);
+      startDate = add(preLookaheadGame.gameDate, { days: 1 });
+    }
+
     let rowHolder = this.state.slugHolder;
 
     const lookaheadGames = {};
@@ -203,18 +257,14 @@ export class Calendar extends React.Component {
     let gameToday = null;
     let holderIsHome = false;
     let slugWinner = '';
-    let tdKey = '';
     let trKey = '';
+    // Assume future rosters will remain static.
+    const rowRosters = Object.values(Rosters).pop();
 
-    const rows = Object.keys(lookaheadGames).map(rowStrDate => {
+    const lookaheadStrDates = Object.keys(lookaheadGames);
+    lookaheadStrDates.sort();
+    const rows = lookaheadStrDates.map(rowStrDate => {
       const rowDate = parse(rowStrDate, 'yyyy-MM-dd', new Date());
-
-      // TODO: Be smarter here about mid-season roster changes!
-      let rowRosters = Rosters[format(this.state.zeroWeekDate, 'yyyy-MM-dd')];
-      if (Rosters.hasOwnProperty(rowStrDate)) {
-        rowRosters = Rosters[rowStrDate];
-      }
-
       const cells = Parties.map(p => {
         const partyTeams = Object.values(lookaheadGames[rowStrDate]).reduce(
           (list, game) => {
@@ -229,19 +279,19 @@ export class Calendar extends React.Component {
           []
         );
 
-        tdKey = `${rowStrDate}-${p.name}`;
-        const style = {};
-        if (0 < partyTeams.length) {
-          style.background = 'lightskyblue';
-        }
         return (
-          <td key={tdKey} style={style}>{partyTeams.join(',')}</td>
+          <CalendarCell
+            cellType="lookahead"
+            clickHandler={this.addGameToSpeculativeTimeline}
+            key={`calendar-cell-${rowStrDate}-${p.name}`}
+            slugs={partyTeams}
+            strDate={rowStrDate}
+          />
         );
       });
 
-      trKey = `calendar-${rowStrDate}`;
       return (
-        <tr key={trKey}>
+        <tr key={`calendar-${rowStrDate}`}>
           <td>{format(rowDate, 'MMMM do')}</td>
           {cells}
         </tr>
@@ -262,17 +312,30 @@ export class Calendar extends React.Component {
       </thead>
     );
 
+    // TODO: consider writing this.buildRowForZeroWeekGame() to encapsulate this logic.
+    const rowForZeroWeek = (
+      <tr style={{background: 'lightgray'}}>
+        <td>{format(this.state.zeroWeekDate, 'MMMM do')}</td>
+        <CalendarCell slugs={['TBL']} />
+        <CalendarCell slugs={[]} />
+        <CalendarCell slugs={[]} />
+        <CalendarCell slugs={[]} />
+        <CalendarCell slugs={[]} />
+        <CalendarCell slugs={[]} />
+        <CalendarCell slugs={[]} />
+      </tr>
+    );
     const rowsPlayed = this.buildRowsForCompletedGames();
     const rowsSpeculative = this.buildRowsForSpeculativeTimeline(this.state.today);
 
-    const lookaheadStart = add(this.state.today, { days: rowsSpeculative.length });
-    const rowsLookahead = this.getRowsForLookahead(lookaheadStart);
+    const rowsLookahead = this.getRowsForLookahead(this.state.today);
 
     return (
       <table>
         {header}
 
         <tbody>
+          {rowForZeroWeek}
           {rowsPlayed}
           {rowsSpeculative}
           {rowsLookahead}

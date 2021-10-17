@@ -222,3 +222,73 @@ Also need to do one of the following;
 - update lookahead data structure to store the directed graph of wins
 
 
+### October 17, 2021
+
+Starting work on the CalendarCell component
+
+Possible attributes:
+- type of cell
+  - pre-season
+  - completed
+  - speculative
+  - lookahead
+- team/winner
+- onclick handler
+- styling for button (pointer:cursor, etc)
+
+How to handle multiple teams in a cell?
+
+Probably need to put most of this in a
+separate Team component
+
+Cell
+- gametype styles
+  - pre-season
+  - completed
+  - speculative
+  - lookahead
+
+Button
+- team icon
+- onclick handler/enabled (no clicks for completed games)
+- styling for button (pointer:cursor, etc)
+
+
+Best way to handle click handler logic?
+Whatever
+Don't overthink it.
+Just do something that works
+Extra re-renders isn't terrible here (hopefully)
+
+
+Thinking through the logic of adding a lookahead
+winner to the speculative timeline
+
+Wins in the speculative timeline are rendered
+similarly to completed games, but get to be
+a button that removes itself + all following games
+from the speculative timeline.o
+
+Adding a win to the speculative timeline also
+updates the current holder in Calendar state.
+
+What data should speculative timeline games have
+- gameDate
+- slugHolder
+
+(exactly like completed games)
+
+
+Working okay, but some dates are out of order
+--> ADDING A SORT
+--> COOL
+
+
+Making a commit
+
+
+
+
+
+
+
