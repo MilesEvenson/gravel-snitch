@@ -135,12 +135,14 @@ export class TeamButton extends React.Component {
     const buttonClasses = [
       ...commonClasses,
       'border-black',
+      'team-button',
     ];
 
     const divClasses = [
       ...commonClasses,
       'border-opacity-0',
       'float-left',
+      'team-icon',
     ];
 
 
