@@ -154,8 +154,15 @@ export class Calendar extends React.Component {
     const rows = this.state.completedGames.map(g => {
       const rowStrDate = format(g.gameDate, 'yyyy-MM-dd');
       const trKey = `calendar-row-${rowStrDate}`;
+      const classNames = [
+        'bg-opacity-30',
+        'bg-yellow-300',
+      ];
       return (
-        <tr key={trKey}>
+        <tr
+          className={classNames.join(' ')}
+          key={trKey}
+        >
           <td
             className="whitespace-nowrap"
           >
@@ -185,8 +192,15 @@ export class Calendar extends React.Component {
     const rows = this.state.speculativeTimeline.map(sg => {
       const rowStrDate = format(sg.gameDate, 'yyyy-MM-dd');
       const trKey = `calendar-row-${rowStrDate}`;
+      const classNames = [
+        'bg-opacity-30',
+        'bg-purple-300',
+      ];
       return (
-        <tr key={trKey}>
+        <tr
+          className={classNames.join(' ')}
+          key={trKey}
+        >
           <td
             className="whitespace-nowrap"
           >
@@ -325,7 +339,7 @@ export class Calendar extends React.Component {
           <th className="w-16"></th>
           {Parties.map(p => (
             <th
-              className="w-10"
+              className="w-12"
               key={p.name}
             >
               {p.name}

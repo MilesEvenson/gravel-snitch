@@ -438,6 +438,15 @@ w-4 is a little small, but okay
 Making a commit
 
 
+Improving styling of logos and buttons.
+Feeling decent about what I've got
+
+Fighting with display: flex on <td> elements
+They are stacking vertically
+Haven't seen this before
+No flex, then
+just floats, I guess
+
 
 
 

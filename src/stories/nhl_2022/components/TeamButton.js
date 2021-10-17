@@ -115,15 +115,32 @@ export class TeamButton extends React.Component {
     const imagePath = this.mapSlugToImage(this.props.slug);
     const styleWithLogo = {
       backgroundImage: `url(${imagePath})`,
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'contain',
     };
+    const buttonClasses = [
+      'bg-center',
+      'bg-cover',
+      'bg-no-repeat',
+      'border-2',
+      'border-black',
+      'h-9',
+      'rounded-md',
+      'w-9',
+    ];
+
+    const divClasses = [
+      'bg-center',
+      'bg-cover',
+      'bg-no-repeat',
+      'float-left',
+      'h-9',
+      'w-9',
+    ];
 
     if (this.props.isActive) {
       return (
         <button
-          className="h-4 w-4"
+          alt={this.props.slug}
+          className={buttonClasses.join(' ')}
           onClick={this.props.clickHandler}
           style={styleWithLogo}
         >
@@ -134,7 +151,8 @@ export class TeamButton extends React.Component {
 
     return (
       <div
-        className="h-4 w-4"
+        alt={this.props.slug}
+        className={divClasses.join(' ')}
         style={styleWithLogo}
       >
         &nbsp;

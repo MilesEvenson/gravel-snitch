@@ -8,6 +8,7 @@ export class CalendarCell extends React.Component {
   getDomClasses() {
     const defaultClasses = [
       'pr-4',
+      'py-2',
     ];
 
     let customClasses = [];
@@ -17,14 +18,17 @@ export class CalendarCell extends React.Component {
         customClasses = [
           'completed',
         ];
+        break;
       case 'speculative':
         customClasses = [
           'speculative',
         ];
+        break;
       case 'lookahead':
         customClasses = [
           'lookahead',
         ];
+        break;
     }
     return defaultClasses.concat(customClasses);
   }
@@ -48,6 +52,7 @@ export class CalendarCell extends React.Component {
         />
       );
     });
+
     return (
       <td
         className={this.getDomClasses().join(' ')}
