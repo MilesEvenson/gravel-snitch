@@ -298,6 +298,75 @@ to include generation
 Making a commit
 
 
+I guess it's finally time to figure out styles.
+
+I'll try Tailwind CSS:
+  https://tailwindcss.com/docs
+
+
+Found this blog post:
+  https://blog.logrocket.com/webpack-from-scratch-for-tailwind-css-with-react/
+
+
+Hmmmm
+this blog post is from 2018
+
+Found this:
+  https://dev.to/elfatouakikhalid/your-first-tailwindcss-setup-with-webpack-1gfm
+Not loving it
+
+
+Maybe I can adapt the official Tailwind instructions,
+even though they use create-react-app:
+  https://tailwindcss.com/docs/guides/create-react-app
+
+Blech
+This is complex
+
+
+Re-reading the TailwindCSS docs to better
+understand what it gives me.
+
+Looks a little goofy
+But what the hell
+Let's try it out
+
+
+Installing NPM packages:
+- autoprefixer
+- postcss-import
+- tailwindcss
+
+
+Executing the init:
+  npx tailwindcss init
+
+
+Hmmmm
+Do I care ub having Tailwind JS in React?
+Seems like no?
+
+
+Still, I need to build CSS
+Installing this NPM package:
+- postcss-cli
+
+
+Added this script commands to package.json:
+- css:build
+- css:watch
+
+
+Making a commit
+
+
+Time to add classes to my React!
+
+
+
+
+
+
 
 
 
