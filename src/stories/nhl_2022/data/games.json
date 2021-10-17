@@ -146,11 +146,14 @@
     "slug_home": "BUF"
   },
   {
+    "prob_home_win": 1.0,
+    "prob_away_win": 0.0,
     "gameday": "2021-10-16",
-    "prob_away_win": 0.44166902548468145,
-    "prob_home_win": 0.5583309745153185,
+    "orig_home_win": 0.5583309745153185,
+    "orig_away_win": 0.44166902548468145,
+    "slug_home": "FLA",
     "slug_away": "NYI",
-    "slug_home": "FLA"
+    "slug_winner": "FLA"
   },
   {
     "gameday": "2021-10-16",
