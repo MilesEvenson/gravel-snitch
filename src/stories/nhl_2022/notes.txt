@@ -463,6 +463,16 @@ Looks decent!
 Making a commit
 
 
+Now to figure out a "production" build
+that emits files I can upload to s3
+
+DERP
+I was still running webpack-dev-server for the build:prod command
+
+Reading these docs:
+  https://webpack.js.org/guides/production/
+
+
 
 
 

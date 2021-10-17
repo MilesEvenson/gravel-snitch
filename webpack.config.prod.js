@@ -4,7 +4,6 @@ const path = require('path');
 
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
   entry: {
     app: ['./src/index.js']
   },
