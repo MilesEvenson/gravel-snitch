@@ -156,7 +156,11 @@ export class Calendar extends React.Component {
       const trKey = `calendar-row-${rowStrDate}`;
       return (
         <tr key={trKey}>
-          <td>{format(g.gameDate, 'MMMM do')}</td>
+          <td
+            className="whitespace-nowrap"
+          >
+            {format(g.gameDate, 'MMMM do')}
+          </td>
           {Parties.map(p => {
             const slugs = [];
             if (p.name === g.partyName) {
@@ -183,7 +187,11 @@ export class Calendar extends React.Component {
       const trKey = `calendar-row-${rowStrDate}`;
       return (
         <tr key={trKey}>
-          <td>{format(sg.gameDate, 'MMMM do')}</td>
+          <td
+            className="whitespace-nowrap"
+          >
+            {format(sg.gameDate, 'MMMM do')}
+          </td>
           {Parties.map(p => {
             const slugs = [];
             if (rostersForSpeculation[p.name].includes(sg.slugHolder)) {
@@ -296,7 +304,11 @@ export class Calendar extends React.Component {
 
       return (
         <tr key={`calendar-${rowStrDate}`}>
-          <td>{format(rowDate, 'MMMM do')}</td>
+          <td
+            className="whitespace-nowrap"
+          >
+            {format(rowDate, 'MMMM do')}
+          </td>
           {cells}
         </tr>
       );
@@ -310,8 +322,15 @@ export class Calendar extends React.Component {
     const header = (
       <thead>
         <tr>
-          <th></th>
-          {Parties.map(p => (<th key={p.name}>{p.name}</th>))}
+          <th className="w-16"></th>
+          {Parties.map(p => (
+            <th
+              className="w-10"
+              key={p.name}
+            >
+              {p.name}
+            </th>
+          ))}
         </tr>
       </thead>
     );
@@ -319,7 +338,11 @@ export class Calendar extends React.Component {
     // TODO: consider writing this.buildRowForZeroWeekGame() to encapsulate this logic.
     const rowForZeroWeek = (
       <tr style={{background: 'lightgray'}}>
-        <td>{format(this.state.zeroWeekDate, 'MMMM do')}</td>
+        <td
+          className="whitespace-nowrap"
+        >
+          {format(this.state.zeroWeekDate, 'MMMM do')}
+        </td>
         <CalendarCell slugs={['TBL']} />
         <CalendarCell slugs={[]} />
         <CalendarCell slugs={[]} />
@@ -335,16 +358,18 @@ export class Calendar extends React.Component {
     const rowsLookahead = this.getRowsForLookahead(this.state.today);
 
     return (
-      <table>
-        {header}
+      <div className="container mx-auto">
+        <table className="nhl-2022 table-fixed text-left w-full">
+          {header}
 
-        <tbody>
-          {rowForZeroWeek}
-          {rowsPlayed}
-          {rowsSpeculative}
-          {rowsLookahead}
-        </tbody>
-      </table>
+          <tbody>
+            {rowForZeroWeek}
+            {rowsPlayed}
+            {rowsSpeculative}
+            {rowsLookahead}
+          </tbody>
+        </table>
+      </div>
     );
   }
 

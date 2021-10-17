@@ -6,21 +6,27 @@ import { TeamButton } from './TeamButton';
 export class CalendarCell extends React.Component {
 
   getDomClasses() {
+    const defaultClasses = [
+      'pr-4',
+    ];
+
+    let customClasses = [];
+
     switch (this.props.cellType) {
       case 'completed':
-        return [
+        customClasses = [
           'completed',
         ];
       case 'speculative':
-        return [
+        customClasses = [
           'speculative',
         ];
       case 'lookahead':
-        return [
+        customClasses = [
           'lookahead',
         ];
     }
-    return [];
+    return defaultClasses.concat(customClasses);
   }
 
 
@@ -44,7 +50,7 @@ export class CalendarCell extends React.Component {
     });
     return (
       <td
-        className={this.getDomClasses()}
+        className={this.getDomClasses().join(' ')}
       >
         {buttons}
       </td>

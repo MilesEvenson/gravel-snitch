@@ -16,15 +16,26 @@ export class Menu extends React.Component {
   }
 
   render() {
+    // TODO: eventually implement ReactRouter to navigate between stories.
+
     if (this.state.selectedStory === '') {
       return (
-        <ul>
-          {Object.values(this.props.stories).map(story => (
-            <li key={story.slug}>
-              <button onClick={() => this.setStory(story.slug)}>{story.label}</button>
-            </li>
-          ))}
-        </ul>
+	      <div className="container mx-auto">
+          <h1 className="text-2xl">Gravel Visualizations</h1>
+          <ul className="list-disc">
+            {Object.values(this.props.stories).map(story => (
+              <li key={story.slug}>
+                <a
+                  className="text-blue-600 underline"
+                  href="#"
+                  onClick={() => this.setStory(story.slug)}
+                >
+                  {story.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       );
     }
 
