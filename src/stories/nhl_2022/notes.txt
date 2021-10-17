@@ -63,7 +63,7 @@ Matchup details from the NHL press release:
   4 teams x 2 home / 1 away (Subtotal 8 home / 4 away)
   4 teams x 1 home / 2 away (Subtotal 4 home / 8 away)
 
-  Non-Conference Games    
+  Non-Conference Games
   16 teams x 1 home / 1 away (Subtotal 16 home / 16 away)
 
   Grand Total - 82 Games
@@ -366,7 +366,76 @@ Tailwind feels dumb and I dislike it,
 but I don't *hate* it.
 
 
+Got all 32 NHL team logos
 
+Not to figure out how to use them as background-image
+
+Reading this page
+  https://medium.com/a-beginners-guide-for-webpack-2/copy-all-images-files-to-a-folder-using-copy-webpack-plugin-7c8cf2de7676
+
+
+Installing these NPM packages:
+- url-loader
+- file-loader
+
+
+Adding this to tests: { ... } in webpack.config.js
+
+  {
+    test: /\.(png|jp(e*)g|svg)$/,
+    use: [{
+      loader: 'url-loader',
+      options: {
+        name: 'images/[name].[ext]',
+      },
+    }],
+  }
+
+
+Webpack is building successfully
+This is jamming the whole base64-encoded image
+into the CSS
+Dumb
+
+
+Will go back to trying to get file references to work
+
+Looks like file-loader is deprecated now
+  https://github.com/webpack-contrib/file-loader#file-loader
+
+
+Reading this page:
+  https://webpack.js.org/guides/asset-modules/
+
+
+Replacing this old config in webpack.config.js:
+
+  {
+    test: /\.(png|jp(e*)g|svg)$/i,
+    use: [{
+      loader: 'file-loader',
+      options: {
+        name: 'images/[name].[ext]',
+      },
+    }],
+  }
+
+
+With this:
+
+  {
+    test: /\.(png|jp(e*)g|svg)$/i,
+    type: 'asset/resource'
+  }
+
+
+WORKS
+GREAT
+
+w-4 is a little small, but okay
+
+
+Making a commit
 
 
 

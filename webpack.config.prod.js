@@ -25,6 +25,10 @@ module.exports = {
             loader: 'html-loader'
           }
         ]
+      },
+      {
+        test: /\.(png|jp(e*)g|svg)$/i,
+        type: 'asset/resource'
       }
     ]
   },
