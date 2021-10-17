@@ -162,7 +162,7 @@ export class Calendar extends React.Component {
 
     const lookaheadGames = {};
 
-    let qGame = this.findTeamGameOnDate(startDate, rowHolder);
+    let qGame = this.findNextGameForTeam(format(startDate, 'yyyy-MM-dd'), rowHolder);
     let qMatchup = '';
     let qNode = {};
     const queue = [
