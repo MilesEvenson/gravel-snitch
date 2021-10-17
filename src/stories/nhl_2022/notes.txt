@@ -210,3 +210,15 @@ Feeling good!
 Making a commit
 
 
+I think the next step is creating a CalendarCell component
+- eventually render logo from slug
+- click handler for adding a win to the speculative timeline
+- personal styling based on props (e.g. speculative win, or lookahead cell)
+
+
+Also need to do one of the following;
+- backtrack logic to allow clicking on any lookahead cell
+  and working backward to the most recent completed game
+- update lookahead data structure to store the directed graph of wins
+
+
