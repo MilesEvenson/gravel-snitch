@@ -41,7 +41,7 @@
   },
   "CBJ": {
     "location": "Columbus",
-    "name": "Blue-Jackets",
+    "name": "Blue Jackets",
     "slug": "CBJ"
   },
   "DAL": {
@@ -51,7 +51,7 @@
   },
   "DET": {
     "location": "Detroit",
-    "name": "Red-Wings",
+    "name": "Red Wings",
     "slug": "DET"
   },
   "EDM": {
@@ -65,7 +65,7 @@
     "slug": "FLA"
   },
   "LAK": {
-    "location": "Los-Angeles",
+    "location": "Los Angeles",
     "name": "Kings",
     "slug": "LAK"
   },
@@ -85,17 +85,17 @@
     "slug": "NSH"
   },
   "NJD": {
-    "location": "New-Jersey",
+    "location": "New Jersey",
     "name": "Devils",
     "slug": "NJD"
   },
   "NYI": {
-    "location": "New-York",
+    "location": "New York",
     "name": "Islanders",
     "slug": "NYI"
   },
   "NYR": {
-    "location": "New-York",
+    "location": "New York",
     "name": "Rangers",
     "slug": "NYR"
   },
@@ -115,7 +115,7 @@
     "slug": "PIT"
   },
   "SJS": {
-    "location": "San-Jose",
+    "location": "San Jose",
     "name": "Sharks",
     "slug": "SJS"
   },
@@ -125,18 +125,18 @@
     "slug": "SEA"
   },
   "STL": {
-    "location": "St.-Louis",
+    "location": "St. Louis",
     "name": "Blues",
     "slug": "STL"
   },
   "TBL": {
-    "location": "Tampa-Bay",
+    "location": "Tampa Bay",
     "name": "Lightning",
     "slug": "TBL"
   },
   "TOR": {
     "location": "Toronto",
-    "name": "Maple-Leafs",
+    "name": "Maple Leafs",
     "slug": "TOR"
   },
   "VAN": {
@@ -144,10 +144,10 @@
     "name": "Canucks",
     "slug": "VAN"
   },
-  "VEG": {
+  "VGK": {
     "location": "Vegas",
-    "name": "Golden-Knights",
-    "slug": "VEG"
+    "name": "Golden Knights",
+    "slug": "VGK"
   },
   "WSH": {
     "location": "Washington",

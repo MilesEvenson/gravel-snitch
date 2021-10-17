@@ -14,7 +14,7 @@
     "prob_away_win": 0.33350850252183606,
     "prob_home_win": 0.6664914974781639,
     "slug_away": "SEA",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-10-13",
@@ -114,7 +114,7 @@
     "gameday": "2021-10-14",
     "prob_away_win": 0.5610724345128164,
     "prob_home_win": 0.43892756548718365,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "LAK"
   },
   {
@@ -363,7 +363,7 @@
     "prob_away_win": 0.35335357458339034,
     "prob_home_win": 0.6466464254166097,
     "slug_away": "STL",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-10-21",
@@ -461,7 +461,7 @@
     "prob_away_win": 0.3674685412436851,
     "prob_home_win": 0.6325314587563149,
     "slug_away": "EDM",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-10-23",
@@ -580,7 +580,7 @@
     "prob_away_win": 0.40159401101314696,
     "prob_home_win": 0.598405988986853,
     "slug_away": "NYI",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-10-25",
@@ -649,7 +649,7 @@
     "gameday": "2021-10-26",
     "prob_away_win": 0.42188141484493524,
     "prob_home_win": 0.5781185851550648,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "COL"
   },
   {
@@ -705,7 +705,7 @@
     "gameday": "2021-10-27",
     "prob_away_win": 0.5080417724474683,
     "prob_home_win": 0.4919582275525317,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "DAL"
   },
   {
@@ -811,7 +811,7 @@
     "prob_away_win": 0.28490571088467354,
     "prob_home_win": 0.7150942891153265,
     "slug_away": "ANA",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-10-29",
@@ -950,7 +950,7 @@
     "gameday": "2021-11-02",
     "prob_away_win": 0.4709167858860984,
     "prob_home_win": 0.5290832141139016,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "TOR"
   },
   {
@@ -1062,7 +1062,7 @@
     "gameday": "2021-11-04",
     "prob_away_win": 0.5575754298794157,
     "prob_home_win": 0.44242457012058434,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "OTT"
   },
   {
@@ -1153,7 +1153,7 @@
     "gameday": "2021-11-06",
     "prob_away_win": 0.5091624234690004,
     "prob_home_win": 0.4908375765309996,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "MTL"
   },
   {
@@ -1223,7 +1223,7 @@
     "gameday": "2021-11-07",
     "prob_away_win": 0.5929906033546857,
     "prob_home_win": 0.4070093966453144,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "DET"
   },
   {
@@ -1343,7 +1343,7 @@
     "prob_away_win": 0.33350850252183606,
     "prob_home_win": 0.6664914974781639,
     "slug_away": "SEA",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-11-10",
@@ -1441,7 +1441,7 @@
     "prob_away_win": 0.3800561066032433,
     "prob_home_win": 0.6199438933967567,
     "slug_away": "MIN",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-11-12",
@@ -1567,7 +1567,7 @@
     "prob_away_win": 0.3231432025633947,
     "prob_home_win": 0.6768567974366053,
     "slug_away": "VAN",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-11-14",
@@ -1700,7 +1700,7 @@
     "prob_away_win": 0.40525728188433063,
     "prob_home_win": 0.5947427181156694,
     "slug_away": "CAR",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-11-16",
@@ -1805,7 +1805,7 @@
     "prob_away_win": 0.2784850837173012,
     "prob_home_win": 0.7215149162826988,
     "slug_away": "DET",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-11-18",
@@ -1910,7 +1910,7 @@
     "prob_away_win": 0.3018717216797352,
     "prob_home_win": 0.6981282783202648,
     "slug_away": "CBJ",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-11-20",
@@ -1979,7 +1979,7 @@
     "gameday": "2021-11-22",
     "prob_away_win": 0.5071705597038321,
     "prob_home_win": 0.49282944029616793,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "STL"
   },
   {
@@ -2091,7 +2091,7 @@
     "gameday": "2021-11-24",
     "prob_away_win": 0.4960745926765069,
     "prob_home_win": 0.5039254073234931,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "NSH"
   },
   {
@@ -2239,7 +2239,7 @@
     "prob_away_win": 0.3674685412436851,
     "prob_home_win": 0.6325314587563149,
     "slug_away": "EDM",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-11-27",
@@ -2462,7 +2462,7 @@
     "gameday": "2021-12-01",
     "prob_away_win": 0.5853098735051037,
     "prob_home_win": 0.41469012649489634,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "ANA"
   },
   {
@@ -2553,7 +2553,7 @@
     "gameday": "2021-12-03",
     "prob_away_win": 0.5366227960919778,
     "prob_home_win": 0.4633772039080222,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "ARI"
   },
   {
@@ -2680,7 +2680,7 @@
     "prob_away_win": 0.3487188602886808,
     "prob_home_win": 0.6512811397113192,
     "slug_away": "CGY",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-12-06",
@@ -2813,7 +2813,7 @@
     "prob_away_win": 0.35255752736625057,
     "prob_home_win": 0.6474424726337494,
     "slug_away": "DAL",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-12-09",
@@ -2925,7 +2925,7 @@
     "prob_away_win": 0.33559192782797076,
     "prob_home_win": 0.6644080721720292,
     "slug_away": "PHI",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-12-10",
@@ -3044,7 +3044,7 @@
     "prob_away_win": 0.3800561066032433,
     "prob_home_win": 0.6199438933967567,
     "slug_away": "MIN",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-12-12",
@@ -3078,7 +3078,7 @@
     "gameday": "2021-12-14",
     "prob_away_win": 0.44604799975736387,
     "prob_home_win": 0.5539520002426361,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "BOS"
   },
   {
@@ -3183,7 +3183,7 @@
     "gameday": "2021-12-16",
     "prob_away_win": 0.5769300210834605,
     "prob_home_win": 0.42306997891653947,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "NJD"
   },
   {
@@ -3267,7 +3267,7 @@
     "gameday": "2021-12-17",
     "prob_away_win": 0.4979850570418951,
     "prob_home_win": 0.5020149429581049,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "NYR"
   },
   {
@@ -3372,7 +3372,7 @@
     "gameday": "2021-12-19",
     "prob_away_win": 0.4559101882695472,
     "prob_home_win": 0.5440898117304528,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "NYI"
   },
   {
@@ -3513,7 +3513,7 @@
     "prob_away_win": 0.44032288178532064,
     "prob_home_win": 0.5596771182146794,
     "slug_away": "TBL",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-12-21",
@@ -3646,7 +3646,7 @@
     "prob_away_win": 0.30551707928279104,
     "prob_home_win": 0.694482920717209,
     "slug_away": "LAK",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-12-23",
@@ -3758,7 +3758,7 @@
     "prob_away_win": 0.4352183030610617,
     "prob_home_win": 0.5647816969389383,
     "slug_away": "COL",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-12-28",
@@ -3778,7 +3778,7 @@
     "gameday": "2021-12-28",
     "prob_away_win": 0.5610724345128164,
     "prob_home_win": 0.43892756548718365,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "LAK"
   },
   {
@@ -3933,7 +3933,7 @@
     "prob_away_win": 0.28490571088467354,
     "prob_home_win": 0.7150942891153265,
     "slug_away": "ANA",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2021-12-31",
@@ -4066,7 +4066,7 @@
     "prob_away_win": 0.3576810700498163,
     "prob_home_win": 0.6423189299501837,
     "slug_away": "WPG",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-01-02",
@@ -4164,7 +4164,7 @@
     "prob_away_win": 0.36356034278130034,
     "prob_home_win": 0.6364396572186997,
     "slug_away": "NSH",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-01-04",
@@ -4269,7 +4269,7 @@
     "prob_away_win": 0.3617939234293037,
     "prob_home_win": 0.6382060765706963,
     "slug_away": "NYR",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-01-06",
@@ -4381,7 +4381,7 @@
     "prob_away_win": 0.3241902500564836,
     "prob_home_win": 0.6758097499435164,
     "slug_away": "CHI",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-01-08",
@@ -4507,7 +4507,7 @@
     "prob_away_win": 0.3871799054684093,
     "prob_home_win": 0.6128200945315907,
     "slug_away": "TOR",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-01-11",
@@ -4646,7 +4646,7 @@
     "gameday": "2022-01-14",
     "prob_away_win": 0.49186221125324825,
     "prob_home_win": 0.5081377887467518,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "EDM"
   },
   {
@@ -4751,7 +4751,7 @@
     "gameday": "2022-01-15",
     "prob_away_win": 0.5122548187800617,
     "prob_home_win": 0.4877451812199382,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "CGY"
   },
   {
@@ -4836,7 +4836,7 @@
     "prob_away_win": 0.39773788435444957,
     "prob_home_win": 0.6022621156455504,
     "slug_away": "PIT",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-01-18",
@@ -4990,7 +4990,7 @@
     "prob_away_win": 0.3515346994995868,
     "prob_home_win": 0.6484653005004132,
     "slug_away": "MTL",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-01-21",
@@ -5185,7 +5185,7 @@
     "gameday": "2022-01-24",
     "prob_away_win": 0.46963915465216177,
     "prob_home_win": 0.5303608453478382,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "WSH"
   },
   {
@@ -5227,7 +5227,7 @@
     "gameday": "2022-01-25",
     "prob_away_win": 0.4521371306345101,
     "prob_home_win": 0.5478628693654899,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "CAR"
   },
   {
@@ -5346,7 +5346,7 @@
     "gameday": "2022-01-27",
     "prob_away_win": 0.4691924508051576,
     "prob_home_win": 0.5308075491948424,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "FLA"
   },
   {
@@ -5465,7 +5465,7 @@
     "gameday": "2022-01-29",
     "prob_away_win": 0.4168314010739872,
     "prob_home_win": 0.5831685989260128,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "TBL"
   },
   {
@@ -5648,7 +5648,7 @@
     "prob_away_win": 0.28221128506436577,
     "prob_home_win": 0.7177887149356342,
     "slug_away": "BUF",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-02-02",
@@ -5794,7 +5794,7 @@
     "gameday": "2022-02-25",
     "prob_away_win": 0.5366227960919778,
     "prob_home_win": 0.4633772039080222,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "ARI"
   },
   {
@@ -5865,7 +5865,7 @@
     "prob_away_win": 0.4352183030610617,
     "prob_home_win": 0.5647816969389383,
     "slug_away": "COL",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-02-26",
@@ -6019,7 +6019,7 @@
     "prob_away_win": 0.2958667961539835,
     "prob_home_win": 0.7041332038460165,
     "slug_away": "SJS",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-03-02",
@@ -6103,7 +6103,7 @@
     "prob_away_win": 0.4112029179324561,
     "prob_home_win": 0.5887970820675439,
     "slug_away": "BOS",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-03-03",
@@ -6158,7 +6158,7 @@
     "gameday": "2022-03-04",
     "prob_away_win": 0.5853098735051037,
     "prob_home_win": 0.41469012649489634,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "ANA"
   },
   {
@@ -6285,7 +6285,7 @@
     "prob_away_win": 0.30853567530414006,
     "prob_home_win": 0.6914643246958599,
     "slug_away": "OTT",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-03-07",
@@ -6326,7 +6326,7 @@
     "gameday": "2022-03-08",
     "prob_away_win": 0.5268128367142837,
     "prob_home_win": 0.47318716328571636,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "PHI"
   },
   {
@@ -6410,7 +6410,7 @@
     "gameday": "2022-03-10",
     "prob_away_win": 0.5885254391956308,
     "prob_home_win": 0.41147456080436917,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "BUF"
   },
   {
@@ -6501,7 +6501,7 @@
     "gameday": "2022-03-11",
     "prob_away_win": 0.45989963041751736,
     "prob_home_win": 0.5401003695824826,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "PIT"
   },
   {
@@ -6613,7 +6613,7 @@
     "gameday": "2022-03-13",
     "prob_away_win": 0.565313270253258,
     "prob_home_win": 0.4346867297467421,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "CBJ"
   },
   {
@@ -6711,7 +6711,7 @@
     "gameday": "2022-03-15",
     "prob_away_win": 0.5024492201980983,
     "prob_home_win": 0.4975507798019017,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "WPG"
   },
   {
@@ -6838,7 +6838,7 @@
     "prob_away_win": 0.3888236186467876,
     "prob_home_win": 0.6111763813532124,
     "slug_away": "FLA",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-03-18",
@@ -6908,7 +6908,7 @@
     "prob_away_win": 0.30551707928279104,
     "prob_home_win": 0.694482920717209,
     "slug_away": "LAK",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-03-19",
@@ -7012,7 +7012,7 @@
     "gameday": "2022-03-21",
     "prob_away_win": 0.47842935103945383,
     "prob_home_win": 0.5215706489605462,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "MIN"
   },
   {
@@ -7075,7 +7075,7 @@
     "gameday": "2022-03-22",
     "prob_away_win": 0.5024492201980983,
     "prob_home_win": 0.4975507798019017,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "WPG"
   },
   {
@@ -7188,7 +7188,7 @@
     "prob_away_win": 0.36356034278130034,
     "prob_home_win": 0.6364396572186997,
     "slug_away": "NSH",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-03-24",
@@ -7258,7 +7258,7 @@
     "prob_away_win": 0.3241902500564836,
     "prob_home_win": 0.6758097499435164,
     "slug_away": "CHI",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-03-26",
@@ -7516,7 +7516,7 @@
     "gameday": "2022-03-30",
     "prob_away_win": 0.529145110643364,
     "prob_home_win": 0.47085488935663594,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "SEA"
   },
   {
@@ -7621,7 +7621,7 @@
     "gameday": "2022-04-01",
     "prob_away_win": 0.529145110643364,
     "prob_home_win": 0.47085488935663594,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "SEA"
   },
   {
@@ -7733,7 +7733,7 @@
     "gameday": "2022-04-03",
     "prob_away_win": 0.5408382920286481,
     "prob_home_win": 0.4591617079713519,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "VAN"
   },
   {
@@ -7888,7 +7888,7 @@
     "prob_away_win": 0.3231432025633947,
     "prob_home_win": 0.6768567974366053,
     "slug_away": "VAN",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-04-06",
@@ -8077,7 +8077,7 @@
     "prob_away_win": 0.3268646451290851,
     "prob_home_win": 0.6731353548709149,
     "slug_away": "ARI",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-04-10",
@@ -8132,7 +8132,7 @@
     "gameday": "2022-04-10",
     "prob_away_win": 0.5723417627987009,
     "prob_home_win": 0.4276582372012992,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "SJS"
   },
   {
@@ -8230,7 +8230,7 @@
     "gameday": "2022-04-12",
     "prob_away_win": 0.5408382920286481,
     "prob_home_win": 0.4591617079713519,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "VAN"
   },
   {
@@ -8342,7 +8342,7 @@
     "gameday": "2022-04-14",
     "prob_away_win": 0.5122548187800617,
     "prob_home_win": 0.4877451812199382,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "CGY"
   },
   {
@@ -8447,7 +8447,7 @@
     "gameday": "2022-04-16",
     "prob_away_win": 0.49186221125324825,
     "prob_home_win": 0.5081377887467518,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "EDM"
   },
   {
@@ -8532,7 +8532,7 @@
     "prob_away_win": 0.29197119006405714,
     "prob_home_win": 0.7080288099359429,
     "slug_away": "NJD",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-04-19",
@@ -8609,7 +8609,7 @@
     "prob_away_win": 0.38839749052031036,
     "prob_home_win": 0.6116025094796896,
     "slug_away": "WSH",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-04-20",
@@ -8889,7 +8889,7 @@
     "prob_away_win": 0.2958667961539835,
     "prob_home_win": 0.7041332038460165,
     "slug_away": "SJS",
-    "slug_home": "VEG"
+    "slug_home": "VGK"
   },
   {
     "gameday": "2022-04-25",
@@ -8972,7 +8972,7 @@
     "gameday": "2022-04-26",
     "prob_away_win": 0.5080417724474683,
     "prob_home_win": 0.4919582275525317,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "DAL"
   },
   {
@@ -9007,7 +9007,7 @@
     "gameday": "2022-04-27",
     "prob_away_win": 0.5396502687136662,
     "prob_home_win": 0.4603497312863338,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "CHI"
   },
   {
@@ -9147,7 +9147,7 @@
     "gameday": "2022-04-29",
     "prob_away_win": 0.5071705597038321,
     "prob_home_win": 0.49282944029616793,
-    "slug_away": "VEG",
+    "slug_away": "VGK",
     "slug_home": "STL"
   },
   {
