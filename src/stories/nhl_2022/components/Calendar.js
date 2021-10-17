@@ -230,9 +230,12 @@ export class Calendar extends React.Component {
 
       let qMatchup = `${qNode.game.slug_home}-${qNode.game.slug_away}`;
       if (!lookaheadGames.hasOwnProperty(qNode.game.gameday)) {
-        lookaheadGames[qNode.game.gameday] = {};
+        lookaheadGames[qNode.game.gameday] = {
+          generation: qNode.generation,
+          games: {},
+        };
       }
-      lookaheadGames[qNode.game.gameday][qMatchup] = qNode.game;
+      lookaheadGames[qNode.game.gameday]['games'][qMatchup] = qNode.game;
 
       if (qNode.generation < this.state.countLookaheadGames) {
         qGame = this.findNextGameForTeam(qNode.game.gameday, qNode.game.slug_home);
@@ -266,7 +269,7 @@ export class Calendar extends React.Component {
     const rows = lookaheadStrDates.map(rowStrDate => {
       const rowDate = parse(rowStrDate, 'yyyy-MM-dd', new Date());
       const cells = Parties.map(p => {
-        const partyTeams = Object.values(lookaheadGames[rowStrDate]).reduce(
+        const partyTeams = Object.values(lookaheadGames[rowStrDate].games).reduce(
           (list, game) => {
             if (rowRosters[p.name].includes(game.slug_home)) {
               list.push(game.slug_home);
@@ -283,6 +286,7 @@ export class Calendar extends React.Component {
           <CalendarCell
             cellType="lookahead"
             clickHandler={this.addGameToSpeculativeTimeline}
+            generation={lookaheadGames[rowStrDate].generation}
             key={`calendar-cell-${rowStrDate}-${p.name}`}
             slugs={partyTeams}
             strDate={rowStrDate}

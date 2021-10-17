@@ -287,6 +287,16 @@ Working okay, but some dates are out of order
 Making a commit
 
 
+Time to restrict button to only teams from the
+first lookahead game.
+
+Must tweak shape of lookahead records
+to include generation
+--> DONE
+
+
+Making a commit
+
 
 
 

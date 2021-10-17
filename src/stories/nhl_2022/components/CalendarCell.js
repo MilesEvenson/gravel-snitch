@@ -29,9 +29,13 @@ export class CalendarCell extends React.Component {
       const fnTeamButtonClick = () => {
         this.props.clickHandler(s, this.props.strDate);
       };
+      const isButtonActive = (
+        this.props.generation === 0
+        && this.props.cellType === 'lookahead'
+      );
       return (
         <TeamButton
-          active={this.props.cellType === 'lookahead'}
+          isActive={isButtonActive}
           clickHandler={fnTeamButtonClick}
           key={`${this.props.strDate}-${s}`}
           slug={s}

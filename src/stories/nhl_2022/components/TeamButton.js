@@ -9,7 +9,7 @@ export class TeamButton extends React.Component {
 
 
   render() {
-    if (this.props.active) {
+    if (this.props.isActive) {
       return (
         <button
           onClick={this.props.clickHandler}
