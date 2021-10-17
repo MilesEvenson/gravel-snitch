@@ -116,25 +116,33 @@ export class TeamButton extends React.Component {
     const styleWithLogo = {
       backgroundImage: `url(${imagePath})`,
     };
-    const buttonClasses = [
+
+    const commonClasses = [
+      'border-2',
       'bg-center',
       'bg-cover',
       'bg-no-repeat',
-      'border-2',
-      'border-black',
       'h-9',
       'rounded-md',
       'w-9',
     ];
+    if (this.props.branch === 'blue') {
+      commonClasses.push('bg-blue-200');
+    } else if (this.props.branch === 'green') {
+      commonClasses.push('bg-green-200');
+    }
+
+    const buttonClasses = [
+      ...commonClasses,
+      'border-black',
+    ];
 
     const divClasses = [
-      'bg-center',
-      'bg-cover',
-      'bg-no-repeat',
+      ...commonClasses,
+      'border-opacity-0',
       'float-left',
-      'h-9',
-      'w-9',
     ];
+
 
     if (this.props.isActive) {
       return (

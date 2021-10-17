@@ -448,6 +448,21 @@ No flex, then
 just floats, I guess
 
 
+Adding styling to the lookahead games
+so it's clear how the second step games relate
+to the first step winners
+
+
+How to do this?
+I like Blue/Green branches
+Need to associate the branch with the slug
+
+Looks decent!
+
+
+Making a commit
+
+
 
 
 

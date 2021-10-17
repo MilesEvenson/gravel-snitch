@@ -256,17 +256,22 @@ export class Calendar extends React.Component {
           generation: qNode.generation,
           games: {},
         };
+        if (qNode.hasOwnProperty('branch')) {
+          lookaheadGames[qNode.game.gameday].branch = qNode.branch;
+        }
       }
       lookaheadGames[qNode.game.gameday]['games'][qMatchup] = qNode.game;
 
       if (qNode.generation < this.state.countLookaheadGames) {
         qGame = this.findNextGameForTeam(qNode.game.gameday, qNode.game.slug_home);
         queue.push({
+          branch: (qNode.hasOwnProperty('branch') ? qNode.branch : 'blue'),
           generation: 1 + qNode.generation,
           game: qGame,
         });
         qGame = this.findNextGameForTeam(qNode.game.gameday, qNode.game.slug_away);
         queue.push({
+          branch: (qNode.hasOwnProperty('branch') ? qNode.branch : 'green'),
           generation: 1 + qNode.generation,
           game: qGame,
         });
@@ -290,14 +295,25 @@ export class Calendar extends React.Component {
     lookaheadStrDates.sort();
     const rows = lookaheadStrDates.map(rowStrDate => {
       const rowDate = parse(rowStrDate, 'yyyy-MM-dd', new Date());
+      const slugBranchMap = {};
       const cells = Parties.map(p => {
         const partyTeams = Object.values(lookaheadGames[rowStrDate].games).reduce(
           (list, game) => {
             if (rowRosters[p.name].includes(game.slug_home)) {
               list.push(game.slug_home);
+              if (lookaheadGames[rowStrDate].branch) {
+                slugBranchMap[game.slug_home] = lookaheadGames[rowStrDate].branch;
+              } else {
+                slugBranchMap[game.slug_home] = 'blue';
+              }
             }
             if (rowRosters[p.name].includes(game.slug_away)) {
               list.push(game.slug_away);
+              if (lookaheadGames[rowStrDate].branch) {
+                slugBranchMap[game.slug_away] = lookaheadGames[rowStrDate].branch;
+              } else {
+                slugBranchMap[game.slug_away] = 'green';
+              }
             }
             return list;
           },
@@ -310,6 +326,7 @@ export class Calendar extends React.Component {
             clickHandler={this.addGameToSpeculativeTimeline}
             generation={lookaheadGames[rowStrDate].generation}
             key={`calendar-cell-${rowStrDate}-${p.name}`}
+            slugBranchMap={slugBranchMap}
             slugs={partyTeams}
             strDate={rowStrDate}
           />

@@ -34,6 +34,14 @@ export class CalendarCell extends React.Component {
   }
 
 
+  getBranchForSlug(slug) {
+    if (this.props.cellType === 'lookahead') {
+      return this.props.slugBranchMap[slug];
+    }
+    return '';
+  }
+
+
   render() {
     const buttons = this.props.slugs.map((s, idx) => {
       const fnTeamButtonClick = () => {
@@ -45,6 +53,7 @@ export class CalendarCell extends React.Component {
       );
       return (
         <TeamButton
+          branch={this.getBranchForSlug(s)}
           isActive={isButtonActive}
           clickHandler={fnTeamButtonClick}
           key={`${this.props.strDate}-${s}`}
