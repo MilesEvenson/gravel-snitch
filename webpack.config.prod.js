@@ -34,7 +34,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: '/gravel_snitch/'
   },
   plugins: [
     new HtmlWebPackPlugin({
