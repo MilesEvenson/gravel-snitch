@@ -256,9 +256,6 @@ export class Calendar extends React.Component {
           generation: qNode.generation,
           games: {},
         };
-        if (qNode.hasOwnProperty('branch')) {
-          lookaheadGames[qNode.game.gameday].branch = qNode.branch;
-        }
       }
       lookaheadGames[qNode.game.gameday]['games'][qMatchup] = qNode.game;
 

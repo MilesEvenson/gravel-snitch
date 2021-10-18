@@ -472,6 +472,22 @@ I was still running webpack-dev-server for the build:prod command
 Reading these docs:
   https://webpack.js.org/guides/production/
 
+MOSTLY GOOD
+  http://ff.gravelpit.org/gravel_snitch/#
+
+
+Still some issues with the slugBranchMap
+I am incorrectly setting branch value for the whole day/row.
+It should be per-game.
+--> FIXED
+
+
+Thinking about doing a gradient background for overlap games
+
+Technically possible with these dumb Tailwinds classes:
+  https://tailwindcss.com/docs/background-image#linear-gradients
+
+
 
 
 
