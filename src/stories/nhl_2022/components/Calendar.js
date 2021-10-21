@@ -115,7 +115,7 @@ export class Calendar extends React.Component {
     console.log(`Finding next game for ${slug} after ${strDate}`);
     const nextGame = Games.find(g => {
       return (
-        strDate < g.gameday
+        strDate <= g.gameday
         && (
           g.slug_home === slug
           || g.slug_away === slug
@@ -238,6 +238,8 @@ export class Calendar extends React.Component {
 
     const lookaheadGames = {};
 
+    let dateAfterGameday = new Date();
+    let strDayAfterGameday = '';
     let qGame = this.findNextGameForTeam(format(startDate, 'yyyy-MM-dd'), rowHolder);
     let qMatchup = '';
     let qNode = {};
@@ -259,14 +261,20 @@ export class Calendar extends React.Component {
       }
       lookaheadGames[qNode.game.gameday]['games'][qMatchup] = qNode.game;
 
+      dateAfterGameday = add(
+        parse(qNode.game.gameday, 'yyyy-MM-dd', new Date()),
+        { days: 1 }
+      );
+      strDayAfterGameday = format(dateAfterGameday, 'yyyy-MM-dd');
+
       if (qNode.generation < this.state.countLookaheadGames) {
-        qGame = this.findNextGameForTeam(qNode.game.gameday, qNode.game.slug_home);
+        qGame = this.findNextGameForTeam(strDayAfterGameday, qNode.game.slug_home);
         queue.push({
           branch: (qNode.hasOwnProperty('branch') ? qNode.branch : 'blue'),
           generation: 1 + qNode.generation,
           game: qGame,
         });
-        qGame = this.findNextGameForTeam(qNode.game.gameday, qNode.game.slug_away);
+        qGame = this.findNextGameForTeam(strDayAfterGameday, qNode.game.slug_away);
         queue.push({
           branch: (qNode.hasOwnProperty('branch') ? qNode.branch : 'green'),
           generation: 1 + qNode.generation,
