@@ -126,10 +126,14 @@ export class TeamButton extends React.Component {
       'rounded-md',
       'w-9',
     ];
-    if (this.props.branch === 'blue') {
-      commonClasses.push('bg-blue-200');
-    } else if (this.props.branch === 'green') {
-      commonClasses.push('bg-green-200');
+    if (this.props.branches.length === 1) {
+      if (this.props.branches[0] === 'blue') {
+        commonClasses.push('bg-blue-200');
+      } else if (this.props.branches[0] === 'red') {
+        commonClasses.push('bg-red-200');
+      }
+    } else if (this.props.branches.length === 2) {
+      commonClasses.push('bg-purple-200');
     }
 
     const buttonClasses = [

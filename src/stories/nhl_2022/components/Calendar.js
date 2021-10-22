@@ -155,8 +155,7 @@ export class Calendar extends React.Component {
       const rowStrDate = format(g.gameDate, 'yyyy-MM-dd');
       const trKey = `calendar-row-${rowStrDate}`;
       const classNames = [
-        'bg-opacity-30',
-        'bg-yellow-300',
+        'bg-gray-200',
       ];
       return (
         <tr
@@ -194,7 +193,7 @@ export class Calendar extends React.Component {
       const trKey = `calendar-row-${rowStrDate}`;
       const classNames = [
         'bg-opacity-30',
-        'bg-purple-300',
+        'bg-green-200',
       ];
       return (
         <tr
@@ -239,6 +238,7 @@ export class Calendar extends React.Component {
     const lookaheadGames = {};
 
     let dateAfterGameday = new Date();
+    let newBranches = [];
     let strDayAfterGameday = '';
     let qGame = this.findNextGameForTeam(format(startDate, 'yyyy-MM-dd'), rowHolder);
     let qMatchup = '';
@@ -249,6 +249,8 @@ export class Calendar extends React.Component {
         game: qGame,
       },
     ];
+    // TODO: replace loop with straight-line code because
+    // we only lookahead one game for the next holder and next challenger
     while (0 < queue.length) {
       qNode = queue.shift();
 
@@ -259,7 +261,20 @@ export class Calendar extends React.Component {
           games: {},
         };
       }
-      lookaheadGames[qNode.game.gameday]['games'][qMatchup] = qNode.game;
+
+      if (!lookaheadGames[qNode.game.gameday]['games'].hasOwnProperty(qMatchup)) {
+        lookaheadGames[qNode.game.gameday]['games'][qMatchup] = {
+          branches: [],
+          game: qNode.game,
+        };
+      }
+      if (qNode.branches) {
+        qNode.branches.forEach(b => (
+          lookaheadGames[qNode.game.gameday]['games'][qMatchup]['branches'].push(b)
+        ));
+      } else {
+        console.log(`qNode has no branches`, qNode);
+      }
 
       dateAfterGameday = add(
         parse(qNode.game.gameday, 'yyyy-MM-dd', new Date()),
@@ -270,13 +285,13 @@ export class Calendar extends React.Component {
       if (qNode.generation < this.state.countLookaheadGames) {
         qGame = this.findNextGameForTeam(strDayAfterGameday, qNode.game.slug_home);
         queue.push({
-          branch: (qNode.hasOwnProperty('branch') ? qNode.branch : 'blue'),
+          branches: (qNode.hasOwnProperty('branches') ? [ ...qNode.branches ] : ['blue']),
           generation: 1 + qNode.generation,
           game: qGame,
         });
         qGame = this.findNextGameForTeam(strDayAfterGameday, qNode.game.slug_away);
         queue.push({
-          branch: (qNode.hasOwnProperty('branch') ? qNode.branch : 'green'),
+          branches: (qNode.hasOwnProperty('branches') ? [ ...qNode.branches ] : ['red']),
           generation: 1 + qNode.generation,
           game: qGame,
         });
@@ -302,22 +317,26 @@ export class Calendar extends React.Component {
       const rowDate = parse(rowStrDate, 'yyyy-MM-dd', new Date());
       const slugBranchMap = {};
       const cells = Parties.map(p => {
-        const partyTeams = Object.values(lookaheadGames[rowStrDate].games).reduce(
-          (list, game) => {
+        const partyTeams = Object.keys(lookaheadGames[rowStrDate].games).reduce(
+          (list, matchup) => {
+            const {
+              branches,
+              game,
+            } = lookaheadGames[rowStrDate].games[matchup];
             if (rowRosters[p.name].includes(game.slug_home)) {
               list.push(game.slug_home);
-              if (lookaheadGames[rowStrDate].branch) {
-                slugBranchMap[game.slug_home] = lookaheadGames[rowStrDate].branch;
+              if (branches && branches.length) {
+                slugBranchMap[game.slug_home] = [ ...branches ];
               } else {
-                slugBranchMap[game.slug_home] = 'blue';
+                slugBranchMap[game.slug_home] = ['blue'];
               }
             }
             if (rowRosters[p.name].includes(game.slug_away)) {
               list.push(game.slug_away);
-              if (lookaheadGames[rowStrDate].branch) {
-                slugBranchMap[game.slug_away] = lookaheadGames[rowStrDate].branch;
+              if (branches && branches.length) {
+                slugBranchMap[game.slug_away] = [ ...branches ];
               } else {
-                slugBranchMap[game.slug_away] = 'green';
+                slugBranchMap[game.slug_away] = ['red'];
               }
             }
             return list;
@@ -373,7 +392,7 @@ export class Calendar extends React.Component {
 
     // TODO: consider writing this.buildRowForZeroWeekGame() to encapsulate this logic.
     const rowForZeroWeek = (
-      <tr style={{background: 'lightgray'}}>
+      <tr className="bg-gray-200 border-t-0 border-r-0 border-b-2 border-l-0 border-black">
         <td
           className="whitespace-nowrap"
         >
@@ -392,6 +411,7 @@ export class Calendar extends React.Component {
     const rowsSpeculative = this.buildRowsForSpeculativeTimeline(this.state.today);
 
     const rowsLookahead = this.getRowsForLookahead(this.state.today);
+
 
     return (
       <div className="container mx-auto">
