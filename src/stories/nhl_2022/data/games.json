@@ -606,11 +606,14 @@
     "slug_home": "NYR"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-10-25",
-    "prob_away_win": 0.3640187658479871,
-    "prob_home_win": 0.6359812341520129,
+    "orig_away_win": 0.3640187658479871,
+    "orig_home_win": 0.6359812341520129,
     "slug_away": "ARI",
-    "slug_home": "FLA"
+    "slug_home": "FLA",
+    "slug_winner": "FLA"
   },
   {
     "gameday": "2021-10-25",
