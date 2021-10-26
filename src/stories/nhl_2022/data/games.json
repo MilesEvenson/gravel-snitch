@@ -526,11 +526,14 @@
     "slug_home": "WPG"
   },
   {
+    "prob_away_win": 1.0,
+    "prob_home_win": 0.0,
     "gameday": "2021-10-23",
-    "prob_away_win": 0.48573329704224355,
-    "prob_home_win": 0.5142667029577564,
+    "orig_away_win": 0.48573329704224355,
+    "orig_home_win": 0.5142667029577564,
     "slug_away": "FLA",
-    "slug_home": "PHI"
+    "slug_home": "PHI",
+    "slug_winner": "FLA"
   },
   {
     "gameday": "2021-10-23",
