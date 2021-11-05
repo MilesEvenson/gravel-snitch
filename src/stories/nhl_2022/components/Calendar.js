@@ -238,9 +238,31 @@ export class Calendar extends React.Component {
     const lookaheadGames = {};
 
     let dateAfterGameday = new Date();
-    let newBranches = [];
     let strDayAfterGameday = '';
     let qGame = this.findNextGameForTeam(format(startDate, 'yyyy-MM-dd'), rowHolder);
+    const rootHolder = rowHolder;
+    const rootGame = this.findNextGameForTeam(format(startDate, 'yyyy-MM-dd'), rootHolder);
+    const rootMatchup = `${rootGame.slug_home}-${rootGame.slug_away}`;
+    let challenger = rootGame.slug_away;
+    if (rootGame.slug_away === this.state.slugHolder) {
+      challenger = rootGame.slug_home;
+    }
+
+    // add holder's next game, the root game
+    lookaheadGames[rootGame.gameday] = {
+      games: {
+        [rootMatchup]: {
+          branches: [],
+          game: { ...rootGame },
+        },
+      },
+    };
+
+    // lookahead to holder's next next game
+    const holderLookaheadGame = this.findNextGameForTeam(rootGame.gameday, rootHolder);
+
+    // lookahead to challenger's next next game
+
     let qMatchup = '';
     let qNode = {};
     const queue = [

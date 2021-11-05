@@ -488,6 +488,30 @@ Technically possible with these dumb Tailwinds classes:
   https://tailwindcss.com/docs/background-image#linear-gradients
 
 
+### October 31, 2021
+
+Back at it on the plane to Hawaii
+Hoping to update the coloring for lookahead teams.
+Goal:
+- holder is always blue
+- challenger is always red
+
+
+Reviewing notes with my partial work in git stash
+Not sure if I can adapt this code so long after I wrote it.
+
+
+I like the idea of replacing the loop-based 'graph' traversal
+with simpler straight-line code:
+- lookahead holder
+- lookahead challenger
+
+
+Rough plan:
+- replace home/away with holder/challenger
+- unroll loop
+- done?
+
 
 
 
