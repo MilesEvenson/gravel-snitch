@@ -238,7 +238,6 @@ export class Calendar extends React.Component {
     const lookaheadGames = {};
 
     let dateAfterGameday = new Date();
-    let strDayAfterGameday = '';
     let qGame = this.findNextGameForTeam(format(startDate, 'yyyy-MM-dd'), rowHolder);
     const rootHolder = rowHolder;
     const rootGame = this.findNextGameForTeam(format(startDate, 'yyyy-MM-dd'), rootHolder);
@@ -248,7 +247,7 @@ export class Calendar extends React.Component {
       challenger = rootGame.slug_home;
     }
 
-    // add holder's next game, the root game
+    // Add the root game of our short lookahead tree.
     lookaheadGames[rootGame.gameday] = {
       games: {
         [rootMatchup]: {
@@ -258,67 +257,37 @@ export class Calendar extends React.Component {
       },
     };
 
+    const dayAfterRootGameday = add(
+      parse(rootGame.gameday, 'yyyy-MM-dd', new Date()),
+      { days: 1 }
+    );
+    const strDayAfterRootGameday = format(dayAfterRootGameday, 'yyyy-MM-dd');
+
     // lookahead to holder's next next game
-    const holderLookaheadGame = this.findNextGameForTeam(rootGame.gameday, rootHolder);
+    const holderNextGame = this.findNextGameForTeam(strDayAfterRootGameday, rootHolder);
+    const holderNextMatchup = `${holderNextGame.slug_home}-${holderNextGame.slug_away}`;
+    // No need to check for this because we know that
+    // rootGame and holderNextGame are different games.
+    lookaheadGames[holderNextGame.gameday] = {
+      games: {
+        [holderNextMatchup]: {
+          branches: [ 'blue' ],
+          game: { ...holderNextGame },
+        },
+      },
+    };
 
     // lookahead to challenger's next next game
-
-    let qMatchup = '';
-    let qNode = {};
-    const queue = [
-      {
-        generation: 0,
-        game: qGame,
+    const challengerNextGame = this.findNextGameForTeam(strDayAfterRootGameday, challenger);
+    const challengerNextMatchup = `${challengerNextGame.slug_home}-${challengerNextGame.slug_away}`;
+    lookaheadGames[challengerNextGame.gameday] = {
+      games: {
+        [challengerNextMatchup]: {
+          branches: [ 'red' ],
+          game: { ...challengerNextGame },
+        },
       },
-    ];
-    // TODO: replace loop with straight-line code because
-    // we only lookahead one game for the next holder and next challenger
-    while (0 < queue.length) {
-      qNode = queue.shift();
-
-      let qMatchup = `${qNode.game.slug_home}-${qNode.game.slug_away}`;
-      if (!lookaheadGames.hasOwnProperty(qNode.game.gameday)) {
-        lookaheadGames[qNode.game.gameday] = {
-          generation: qNode.generation,
-          games: {},
-        };
-      }
-
-      if (!lookaheadGames[qNode.game.gameday]['games'].hasOwnProperty(qMatchup)) {
-        lookaheadGames[qNode.game.gameday]['games'][qMatchup] = {
-          branches: [],
-          game: qNode.game,
-        };
-      }
-      if (qNode.branches) {
-        qNode.branches.forEach(b => (
-          lookaheadGames[qNode.game.gameday]['games'][qMatchup]['branches'].push(b)
-        ));
-      } else {
-        console.log(`qNode has no branches`, qNode);
-      }
-
-      dateAfterGameday = add(
-        parse(qNode.game.gameday, 'yyyy-MM-dd', new Date()),
-        { days: 1 }
-      );
-      strDayAfterGameday = format(dateAfterGameday, 'yyyy-MM-dd');
-
-      if (qNode.generation < this.state.countLookaheadGames) {
-        qGame = this.findNextGameForTeam(strDayAfterGameday, qNode.game.slug_home);
-        queue.push({
-          branches: (qNode.hasOwnProperty('branches') ? [ ...qNode.branches ] : ['blue']),
-          generation: 1 + qNode.generation,
-          game: qGame,
-        });
-        qGame = this.findNextGameForTeam(strDayAfterGameday, qNode.game.slug_away);
-        queue.push({
-          branches: (qNode.hasOwnProperty('branches') ? [ ...qNode.branches ] : ['red']),
-          generation: 1 + qNode.generation,
-          game: qGame,
-        });
-      }
-    }
+    };
 
     console.log('Built dictionary of lookahead games:');
     console.dir(lookaheadGames, { depth: null });
