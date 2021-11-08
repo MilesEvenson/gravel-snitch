@@ -1195,11 +1195,14 @@
     "slug_home": "BUF"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-11-06",
-    "prob_away_win": 0.453228148824699,
-    "prob_home_win": 0.546771851175301,
+    "orig_away_win": 0.453228148824699,
+    "orig_home_win": 0.546771851175301,
     "slug_away": "BOS",
-    "slug_home": "TOR"
+    "slug_home": "TOR",
+    "slug_winner": "TOR"
   },
   {
     "gameday": "2021-11-06",
