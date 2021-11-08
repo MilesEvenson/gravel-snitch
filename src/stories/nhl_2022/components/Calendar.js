@@ -324,7 +324,6 @@ export class Calendar extends React.Component {
               branches,
               game,
             } = lookaheadGames[rowStrDate].games[matchup];
-            // TODO: update this logic to respect challenger/holder
             if (rowRosters[p.name].includes(game.slug_home)) {
               list.push(game.slug_home);
               if (branches && branches.length) {
@@ -337,7 +336,6 @@ export class Calendar extends React.Component {
                 }
               }
             }
-            // TODO: update this logic to respect challenger/holder
             if (rowRosters[p.name].includes(game.slug_away)) {
               list.push(game.slug_away);
               if (branches && branches.length) {
