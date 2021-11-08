@@ -513,6 +513,30 @@ Rough plan:
 - done?
 
 
+### November 7, 2021
+
+Back at it in Kona
+Hoping to ensure stable colors for holder/challenger
+
+
+Basic impl complete
+I think?
+Code still doesn't keep stable colors
+hmmmm
+
+Looks like I need to update the logic that
+builds the lookahead branches/dict from the
+initial lookahead data structure
+
+
+Thinking through what's wrong with the exiting logic.
+It uses home/away from the root game.
+I need to identify holder/challenger instead.
+--> DONE
+
+Making a commit
+
+
 
 
 

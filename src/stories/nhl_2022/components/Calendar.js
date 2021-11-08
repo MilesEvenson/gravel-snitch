@@ -255,6 +255,7 @@ export class Calendar extends React.Component {
           game: { ...rootGame },
         },
       },
+      generation: 0,
     };
 
     const dayAfterRootGameday = add(
@@ -275,19 +276,28 @@ export class Calendar extends React.Component {
           game: { ...holderNextGame },
         },
       },
+      generation: 1,
     };
 
     // lookahead to challenger's next next game
     const challengerNextGame = this.findNextGameForTeam(strDayAfterRootGameday, challenger);
     const challengerNextMatchup = `${challengerNextGame.slug_home}-${challengerNextGame.slug_away}`;
-    lookaheadGames[challengerNextGame.gameday] = {
-      games: {
-        [challengerNextMatchup]: {
-          branches: [ 'red' ],
-          game: { ...challengerNextGame },
+    if (lookaheadGames.hasOwnProperty(challengerNextGame.gameday)) {
+      lookaheadGames[challengerNextGame.gameday]['games'][challengerNextMatchup] = {
+        branches: [ 'red' ],
+        game: { ...challengerNextGame },
+      };
+    } else {
+      lookaheadGames[challengerNextGame.gameday] = {
+        games: {
+          [challengerNextMatchup]: {
+            branches: [ 'red' ],
+            game: { ...challengerNextGame },
+          },
         },
-      },
-    };
+        generation: 1,
+      };
+    }
 
     console.log('Built dictionary of lookahead games:');
     console.dir(lookaheadGames, { depth: null });
@@ -314,20 +324,30 @@ export class Calendar extends React.Component {
               branches,
               game,
             } = lookaheadGames[rowStrDate].games[matchup];
+            // TODO: update this logic to respect challenger/holder
             if (rowRosters[p.name].includes(game.slug_home)) {
               list.push(game.slug_home);
               if (branches && branches.length) {
                 slugBranchMap[game.slug_home] = [ ...branches ];
               } else {
-                slugBranchMap[game.slug_home] = ['blue'];
+                if (game.slug_home === this.state.slugHolder) {
+                  slugBranchMap[game.slug_home] = ['blue'];
+                } else {
+                  slugBranchMap[game.slug_home] = ['red'];
+                }
               }
             }
+            // TODO: update this logic to respect challenger/holder
             if (rowRosters[p.name].includes(game.slug_away)) {
               list.push(game.slug_away);
               if (branches && branches.length) {
                 slugBranchMap[game.slug_away] = [ ...branches ];
               } else {
-                slugBranchMap[game.slug_away] = ['red'];
+                if (game.slug_away === this.state.slugHolder) {
+                  slugBranchMap[game.slug_away] = ['blue'];
+                } else {
+                  slugBranchMap[game.slug_away] = ['red'];
+                }
               }
             }
             return list;
