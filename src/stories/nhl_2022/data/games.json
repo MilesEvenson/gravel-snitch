@@ -1296,11 +1296,14 @@
     "slug_home": "NYR"
   },
   {
+    "prob_away_win": 1.0,
+    "prob_home_win": 0.0,
     "gameday": "2021-11-08",
-    "prob_away_win": 0.34303391618431045,
-    "prob_home_win": 0.6569660838156895,
+    "orig_away_win": 0.34303391618431045,
+    "orig_home_win": 0.6569660838156895,
     "slug_away": "LAK",
-    "slug_home": "TOR"
+    "slug_home": "TOR",
+    "slug_winner": "LAK"
   },
   {
     "gameday": "2021-11-09",
