@@ -417,6 +417,19 @@ export class Calendar extends React.Component {
       </tr>
     );
     const rowsPlayed = this.buildRowsForCompletedGames();
+    const ownerNames = (
+      <tr>
+        <th className="w-16"></th>
+        {Parties.map(p => (
+          <th
+            className="w-12"
+            key={p.name}
+          >
+            {p.name}
+          </th>
+        ))}
+      </tr>
+    );
     const rowsSpeculative = this.buildRowsForSpeculativeTimeline(this.state.today);
 
     const rowsLookahead = this.getRowsForLookahead(this.state.today);
@@ -424,12 +437,13 @@ export class Calendar extends React.Component {
 
     return (
       <div className="container mx-auto">
-        <table className="nhl-2022 table-fixed text-left w-full">
+        <table className="nhl-2022 mb-20 table-fixed text-left w-full">
           {header}
 
           <tbody>
             {rowForZeroWeek}
             {rowsPlayed}
+            {ownerNames}
             {rowsSpeculative}
             {rowsLookahead}
           </tbody>
