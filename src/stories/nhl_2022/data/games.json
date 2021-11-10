@@ -1306,11 +1306,14 @@
     "slug_winner": "LAK"
   },
   {
+    "prob_away_win": 1.0,
+    "prob_home_win": 0.0,
     "gameday": "2021-11-09",
     "prob_away_win": 0.37832003282627524,
     "prob_home_win": 0.6216799671737248,
     "slug_away": "LAK",
-    "slug_home": "MTL"
+    "slug_home": "MTL",
+    "slug_winner": "LAK"
   },
   {
     "gameday": "2021-11-09",
