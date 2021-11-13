@@ -1414,11 +1414,14 @@
     "slug_home": "BOS"
   },
   {
+    "prob_away_win": 1.0,
+    "prob_home_win": 0.0,
     "gameday": "2021-11-11",
     "prob_away_win": 0.42506596532100094,
     "prob_home_win": 0.5749340346789991,
     "slug_away": "LAK",
-    "slug_home": "OTT"
+    "slug_home": "OTT",
+    "slug_winner": "LAK"
   },
   {
     "gameday": "2021-11-11",
