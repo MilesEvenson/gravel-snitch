@@ -1536,11 +1536,14 @@
     "slug_home": "TBL"
   },
   {
+    "prob_away_win": 1.0,
+    "prob_home_win": 0.0,
     "gameday": "2021-11-13",
-    "prob_away_win": 0.3720244181809319,
-    "prob_home_win": 0.6279755818190681,
+    "orig_away_win": 0.3720244181809319,
+    "orig_home_win": 0.6279755818190681,
     "slug_away": "LAK",
-    "slug_home": "WPG"
+    "slug_home": "WPG",
+    "slug_winner": "LAK"
   },
   {
     "gameday": "2021-11-13",
