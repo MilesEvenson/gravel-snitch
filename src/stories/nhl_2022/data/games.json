@@ -1836,11 +1836,14 @@
     "slug_home": "ARI"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-11-18",
     "prob_away_win": 0.4181982563630058,
     "prob_home_win": 0.5818017436369942,
     "slug_away": "WPG",
-    "slug_home": "EDM"
+    "slug_home": "EDM",
+    "slug_winner": "EDM"
   },
   {
     "gameday": "2021-11-18",
