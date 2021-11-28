@@ -26,6 +26,7 @@ export class Calendar extends React.Component {
     const zeroWeekDate = new Date('2021-10-11T12:00:00.000-04:00');
 
     const completedGames = this.processCompletedGames(zeroWeekDate, today);
+    const scores = this.calculateScoresFromCompletedGames(completedGames, Parties);
 
     const slugHolder = completedGames[completedGames.length - 1].slugHolder;
 
@@ -33,6 +34,7 @@ export class Calendar extends React.Component {
       completedGames: completedGames,
       countLookaheadGames: 1,
       lookaheadTree: {},
+      scores: scores,
       slugHolder: slugHolder,
       slugInitalHolder: 'TBL',
       strSeasonStart: '2021-10-14',
@@ -94,6 +96,22 @@ export class Calendar extends React.Component {
     }
 
     return games;
+  }
+
+
+  calculateScoresFromCompletedGames(games, parties) {
+    const baseScores = parties.reduce(
+      (dict, p) => ({ ...dict, [p.name]: 0 }),
+      {}
+    );
+    const ownerScores = games.reduce(
+      (dict, g) => {
+        dict[g.partyName]++;
+        return dict;
+      },
+      baseScores
+    );
+    return ownerScores;
   }
 
 
@@ -392,7 +410,7 @@ export class Calendar extends React.Component {
               className="w-12"
               key={p.name}
             >
-              {p.name}
+              {p.name}&nbsp;({this.state.scores[p.name]})
             </th>
           ))}
         </tr>
@@ -425,7 +443,7 @@ export class Calendar extends React.Component {
             className="w-12"
             key={p.name}
           >
-            {p.name}
+            {p.name}&nbsp;({this.state.scores[p.name]})
           </th>
         ))}
       </tr>
