@@ -2251,11 +2251,14 @@
     "slug_home": "BUF"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-11-26",
-    "prob_away_win": 0.5148460029823196,
-    "prob_home_win": 0.4851539970176804,
+    "orig_away_win": 0.5148460029823196,
+    "orig_home_win": 0.4851539970176804,
     "slug_away": "COL",
-    "slug_home": "DAL"
+    "slug_home": "DAL",
+    "slug_winner": "DAL"
   },
   {
     "gameday": "2021-11-26",
