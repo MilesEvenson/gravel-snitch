@@ -2317,11 +2317,14 @@
     "slug_home": "STL"
   },
   {
+    "prob_away_win": 1.0,
+    "prob_home_win": 0.0,
     "gameday": "2021-11-27",
-    "prob_away_win": 0.4567982430351619,
-    "prob_home_win": 0.5432017569648381,
+    "orig_away_win": 0.4567982430351619,
+    "orig_home_win": 0.5432017569648381,
     "slug_away": "DAL",
-    "slug_home": "ARI"
+    "slug_home": "ARI",
+    "slug_winner": "DAL"
   },
   {
     "gameday": "2021-11-27",
