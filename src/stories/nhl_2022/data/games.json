@@ -2467,11 +2467,14 @@
     "slug_home": "MIN"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-11-30",
-    "prob_away_win": 0.48410191696879,
-    "prob_home_win": 0.51589808303121,
+    "orig_away_win": 0.48410191696879,
+    "orig_home_win": 0.51589808303121,
     "slug_away": "CAR",
-    "slug_home": "DAL"
+    "slug_home": "DAL",
+    "slug_winner": "DAL"
   },
   {
     "gameday": "2021-11-30",
