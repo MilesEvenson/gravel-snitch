@@ -2582,11 +2582,14 @@
     "slug_home": "MIN"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-12-02",
-    "prob_away_win": 0.3732246418347317,
-    "prob_home_win": 0.6267753581652683,
+    "orig_away_win": 0.3732246418347317,
+    "orig_home_win": 0.6267753581652683,
     "slug_away": "CBJ",
-    "slug_home": "DAL"
+    "slug_home": "DAL",
+    "slug_winner": "DAL"
   },
   {
     "gameday": "2021-12-02",
