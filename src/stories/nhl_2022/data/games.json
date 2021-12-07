@@ -2760,11 +2760,14 @@
     "slug_home": "PHI"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-12-06",
-    "prob_away_win": 0.4007341039402199,
-    "prob_home_win": 0.5992658960597801,
+    "orig_away_win": 0.4007341039402199,
+    "orig_home_win": 0.5992658960597801,
     "slug_away": "ARI",
-    "slug_home": "DAL"
+    "slug_home": "DAL",
+    "slug_winner": "DAL"
   },
   {
     "gameday": "2021-12-06",
