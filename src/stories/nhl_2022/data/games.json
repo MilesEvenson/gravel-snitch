@@ -3049,11 +3049,14 @@
     "slug_home": "NYI"
   },
   {
+    "prob_away_win": 1.0,
+    "prob_home_win": 0.0,
     "gameday": "2021-12-11",
-    "prob_away_win": 0.4382115754868299,
-    "prob_home_win": 0.5617884245131701,
+    "orig_away_win": 0.4382115754868299,
+    "orig_home_win": 0.5617884245131701,
     "slug_away": "PHI",
-    "slug_home": "ARI"
+    "slug_home": "ARI",
+    "slug_winner": "PHI"
   },
   {
     "gameday": "2021-12-11",
