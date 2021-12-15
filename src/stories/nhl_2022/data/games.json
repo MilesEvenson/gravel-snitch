@@ -2990,11 +2990,14 @@
     "slug_home": "COL"
   },
   {
+    "prob_away_win": 1.0,
+    "prob_home_win": 0.0,
     "gameday": "2021-12-10",
-    "prob_away_win": 0.33559192782797076,
-    "prob_home_win": 0.6644080721720292,
+    "orig_away_win": 0.33559192782797076,
+    "orig_home_win": 0.6644080721720292,
     "slug_away": "PHI",
-    "slug_home": "VGK"
+    "slug_home": "VGK",
+    "slug_winner": "PHI"
   },
   {
     "gameday": "2021-12-10",
