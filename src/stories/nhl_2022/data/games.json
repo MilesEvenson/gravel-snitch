@@ -3136,11 +3136,14 @@
     "slug_home": "CHI"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-12-14",
-    "prob_away_win": 0.37973994219638163,
-    "prob_home_win": 0.6202600578036184,
+    "orig_away_win": 0.37973994219638163,
+    "orig_home_win": 0.6202600578036184,
     "slug_away": "NJD",
-    "slug_home": "PHI"
+    "slug_home": "PHI",
+    "slug_winner": "PHI"
   },
   {
     "gameday": "2021-12-14",
