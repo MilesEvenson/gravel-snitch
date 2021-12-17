@@ -3286,11 +3286,14 @@
     "slug_home": "FLA"
   },
   {
+    "prob_away_win": 0.0,
+    "prob_home_win": 1.0,
     "gameday": "2021-12-16",
-    "prob_away_win": 0.41131699018206014,
-    "prob_home_win": 0.5886830098179399,
+    "orig_away_win": 0.41131699018206014,
+    "orig_home_win": 0.5886830098179399,
     "slug_away": "PHI",
-    "slug_home": "MTL"
+    "slug_home": "MTL",
+    "slug_winner": "MTL"
   },
   {
     "gameday": "2021-12-16",
